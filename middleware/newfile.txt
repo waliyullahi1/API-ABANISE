@@ -467,3 +467,16 @@ b6d2a76c-295e-4ea6-8dc5-ba4df82a3329	 2023 Sep 005	006:42:37 	DELETE	 undefined	
 ed1bbd8c-f160-4acd-8882-43e8595b8aea	 2023 Sep 005	006:52:35 	DELETE	 undefined	 /employees
 ea14df3b-3e3b-4da1-a78d-b5b04dd6ac07	 2023 Sep 005	007:04:46 	POST	 undefined	 /employees
 652cb983-3bb0-4d0b-a58b-1cd0df160dd2	 2023 Sep 005	007:06:11 	DELETE	 undefined	 /employees
+1f482eb2-e88d-48ff-b207-cf238c079adf	 2023 Sep 006	005:37:33 	POST	 undefined	 /register
+321b002d-2660-43d8-9163-6baad1e3fee3	 2023 Sep 006	005:40:59 	POST	 undefined	 /register
+35488aa4-8f6b-479f-b181-401a8b559fe5	 2023 Sep 006	005:47:21 	POST	 undefined	 /register
+1d9e7916-0805-4c38-b939-e9421983da18	 2023 Sep 006	006:02:40 	POST	 undefined	 /register
+e7ead2ca-cbe8-4a3c-8622-0d8ebf156318	 2023 Sep 006	006:04:56 	POST	 undefined	 /register
+35d10784-2cee-42f4-a250-30b927df9a36	 2023 Sep 006	006:07:00 	POST	 undefined	 /register
+107556ee-2c0d-44d9-8c97-7ad1a39c366e	 2023 Sep 006	006:08:59 	POST	 undefined	 /register
+10989b4c-c6b5-4a21-bc91-2d73c433923d	 2023 Sep 006	006:09:24 	POST	 undefined	 /register
+7591676f-b6de-446b-81fa-696092e31332	 2023 Sep 006	006:10:13 	POST	 undefined	 /register
+1fb6acbd-2910-4583-8647-291b26d2f884	 2023 Sep 006	006:12:07 	POST	 undefined	 /register
+21803b7e-8c19-4c46-b8ee-ec00abf79305	 2023 Sep 006	006:14:14 	POST	 undefined	 /register
+62f5ffd4-8c8b-4bc6-a04c-f7a568f604bd	 2023 Sep 006	006:16:08 	POST	 undefined	 /register
+c9aafa7b-560b-4852-83a0-5b6c00ebaf62	 2023 Sep 006	006:19:06 	POST	 undefined	 /register

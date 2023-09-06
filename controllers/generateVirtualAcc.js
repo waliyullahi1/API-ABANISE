@@ -4,9 +4,10 @@ const generateVirtualAccount = async (customerEmail,firstName,lastName,phone
 ) => {
   const url = "https://api.paystack.co/dedicated_account";
   const headers = {
-    Authorization: PAYSTACK_SECRETY_CODE,
+    Authorization: ` Bearer ${process.env.PAYSTACK_SECRETY_CODE}`,
     "Content-Type": "application/json",
   };
+  console.log(headers.Authorization)
   const data = {
     customer: customerEmail,
     first_name: firstName,

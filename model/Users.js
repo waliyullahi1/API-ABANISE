@@ -28,6 +28,10 @@ const abaniseScheme = new Scheme({
     type: String,
     require: true,
   },
+  email: {
+    type: String,
+    require: true,
+  },
   preferred_bank: {
     type: String,
     default: "wema-bank",

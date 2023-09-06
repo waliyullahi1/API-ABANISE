@@ -4,15 +4,15 @@ const generateVirtualAccount = require('./generateVirtualAcc')
 
 
 const handleNewUsers = async (req, res) => {
-  const { firstName, lastName, pwd, email, phone } = req.body;
-  if (!firstName || !lastName || !email || !phone || !pwd)
+  const { firstname, lastName, pwd, email, phone } = req.body;
+  if (!firstname || !lastName || !email || !phone || !pwd)
     return res
       .status(400)
       .json({ message: "usermane and password are require" });
   
 
   //check of duplicate username from db
-  const duplicate = await User.findOne({username: user}).exec();
+  const duplicate = await Abanisedata.findOne({ email: email }).exec();
 
   if (duplicate) return res.sendStatus(409); //Conflict
 
@@ -21,16 +21,17 @@ const handleNewUsers = async (req, res) => {
     const hashedPwd = await bcrypt.hash(pwd, 10);
     const accountNumber = await generateVirtualAccount(
       email,
-      firstName,
+      firstname,
       lastName,
       phone
     );
     // store the new users
-    const result = await User.create({
-      first_name: accountNumber.email,
+    const result = await Abanisedata.create({
+      first_name: accountNumber.firstname,
       last_name: accountNumber.lastName,
       phone: accountNumber.phone,
       password: hashedPwd,
+      email: accountNumber.email,
     }); 
 
     console.log(result)
