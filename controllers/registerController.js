@@ -27,11 +27,12 @@ const handleNewUsers = async (req, res) => {
     );
     // store the new users
     const result = await Abanisedata.create({
-      first_name: accountNumber.firstname,
-      last_name: accountNumber.lastName,
-      phone: accountNumber.phone,
+      first_name: firstname,
+      last_name: lastName,
+      phone: phone,
       password: hashedPwd,
-      email: accountNumber.email,
+      email: email,
+      account_number: accountNumber,
     }); 
 
     console.log(result)

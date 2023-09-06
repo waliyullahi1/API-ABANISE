@@ -32,6 +32,10 @@ const abaniseScheme = new Scheme({
     type: String,
     require: true,
   },
+  account_number: {
+    type: String,
+    default: "wema-bank",
+  },
   preferred_bank: {
     type: String,
     default: "wema-bank",
@@ -40,3 +44,4 @@ const abaniseScheme = new Scheme({
 });
 
 module.exports = mongoose.model("Abanisedata", abaniseScheme);
+

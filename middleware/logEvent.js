@@ -1,8 +1,7 @@
 const { format } = require("date-fns");
 const fs = require("fs");
 const express = require("express");
-const app = express();
-const Port = 300;
+
 const path = require("path");
 const { v4: uuid } = require("uuid");
 const fspromise = require("fs").promises;
