@@ -1,0 +1,24 @@
+[
+  {
+    "username": "rawi",
+    "roles": { "User": 789, "Editor": 567, "Admin": 123 },
+    "password": "$2b$10$R67RdZwTVGzRdUSAsMRt6OhqeD3KLPxgRQVyPzxPVZSCMjO1bdsqK"
+  },
+  {
+    "username": "raw",
+    "password": "$2b$10$y4NBN6ZeOBGZHkd5.6mo6unzuHPYab5wQHvgNJ5.fZ.kvzq5XMoE.",
+    "role": { "User": 789, "Editor": 567 }
+  },
+  {
+    "username": "waliu",
+    "password": "$2b$10$TOElyZSOYy.k3jzqFPQpJ.wjqatES1g.Tl..tZSN6aqi32.wzQ24e",
+    "refreshToken": "",
+    "role": { "User": 789 }
+  },
+  {
+    "username": "naheem",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$NOnoVeMgWyVTM7DOR6M5.uGf/FqHGWCSAita8.KwffUrta7GDMWde",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5haGVlbSIsImlhdCI6MTY5MzU1ODg3NSwiZXhwIjoxNjkzNjQ1Mjc1fQ.XPGVS47i6yiJLT59i6OqHGxuCh8dgFNZ-KKRZAihFMw"
+  }
+]

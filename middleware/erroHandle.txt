@@ -1,0 +1,29 @@
+2206061b-1f52-4f76-aaa3-078462f6c4c4	 2023 Aug 017	018:29:24 	Error: Not allow  bc0ce808-dace-4356-8658-fa3e23a135a2	 2023 Aug 017	018:29:24 	Error: Not allow  e2bc244e-b429-484a-8c6c-fcd564054278	 2023 Aug 017	018:46:52 	Error: Not allow  
+fa414daa-9eb8-4e57-ab12-5a6205326a33	 2023 Aug 017	018:47:06 	Error: Not allow  
+0ac1d61d-e71a-4cc6-8232-f52f140d1524	 2023 Aug 018	016:05:05 	Error: ENOENT: no such file or directory, stat 'C:\Users\abanise\Documents\code for class\API\API lession1\route\views\index.html'  
+8852ed1b-5f47-4e6f-bce6-c8504444c96a	 2023 Aug 025	012:57:50 	TypeError: Cannot read properties of undefined (reading 'emp')  
+14249f52-16d3-479f-a0fa-7bfb4a4ceeba	 2023 Aug 025	013:00:34 	TypeError: Cannot read properties of undefined (reading 'emp')  
+6871caaa-e118-4893-9b6e-0f0a9863c0d6	 2023 Aug 025	013:03:57 	TypeError: Cannot read properties of undefined (reading 'emp')  
+f7817ca9-b3ae-4693-9be6-6c3fa08417c1	 2023 Aug 025	013:18:13 	TypeError: Cannot read properties of undefined (reading 'emp')  
+bde2a2cd-aa1f-448a-a01b-39f2edea1bfe	 2023 Aug 025	013:19:45 	TypeError: Cannot read properties of undefined (reading 'id')  
+53750c44-a570-48cb-b99d-ceab6deebc8b	 2023 Aug 025	013:21:50 	TypeError: Cannot read properties of undefined (reading 'id')  
+f988ff15-a006-4e96-bf3e-5742dd38ede8	 2023 Aug 025	013:24:42 	TypeError: Cannot read properties of undefined (reading 'id')  
+d9cfdb01-6ae0-4aa5-8cc4-cc94897fda34	 2023 Aug 025	013:25:45 	TypeError: Cannot read properties of undefined (reading 'id')  
+325792b3-b100-46f0-9141-7216289becb4	 2023 Aug 025	013:26:17 	TypeError: unsortedArray.short is not a function  
+253fa17f-5e5c-420f-8fe9-423b745c6a7b	 2023 Aug 025	013:27:11 	TypeError: Cannot set properties of undefined (setting 'firstname')  
+c4ff8453-9dd2-4132-964b-4b117c4b7835	 2023 Aug 025	013:53:07 	TypeError: Cannot read properties of undefined (reading 'id')  
+f23dce95-9945-4ba4-a6e3-c06dc29501d4	 2023 Aug 025	013:56:19 	TypeError: Cannot read properties of undefined (reading 'id')  
+87ec9445-66a5-4898-8e08-3a334875c817	 2023 Aug 025	013:56:35 	TypeError: Cannot read properties of undefined (reading 'id')  
+03b76fdf-d6ea-40c2-88e5-fe1eac80b896	 2023 Aug 025	014:15:42 	TypeError: Cannot read properties of undefined (reading 'id')  
+79ed8ea6-2ce0-4c7d-a193-9b677e9ebaa8	 2023 Aug 027	012:25:42 	TypeError: res.sendstatus is not a function  
+ea7fb516-8f16-449a-a53a-c27a0d697c9b	 2023 Aug 027	012:26:40 	TypeError: res.sendstatus is not a function  
+3c8a7ab3-3dc0-4988-8589-ea8a5848857f	 2023 Aug 030	013:29:02 	ReferenceError: refreshToken is not defined  
+2de56193-2aef-4fac-8a8f-f3110325d02d	 2023 Aug 030	013:32:55 	ReferenceError: foundUser is not defined  
+0c44e7bd-1f89-4a5f-be13-ab2a53cdfd2f	 2023 Aug 030	013:34:17 	ReferenceError: foundUser is not defined  
+fd4cb9e8-c510-44a5-9ff8-507eab32372d	 2023 Aug 030	013:34:59 	ReferenceError: foundUser is not defined  
+a8217b6a-2c97-41ad-91b6-774d51a88a71	 2023 Aug 031	006:44:10 	ReferenceError: whitelist is not defined  
+f3f7d09c-6998-4c74-8082-5d3f5d076d0d	 2023 Aug 031	006:44:44 	TypeError: allowOrigins.indexOf is not a function  
+dbc59282-9613-4f97-a316-48415d34e63f	 2023 Aug 031	007:04:31 	TypeError: allowOrigins.indexOf is not a function  
+2367bd66-316c-4341-aec9-1630fa14b213	 2023 Sep 001	003:57:50 	TypeError: res.headers is not a function  
+b9cde4b1-f3f5-43fd-85d5-2c831fc52b4e	 2023 Sep 004	013:18:05 	SyntaxError: Expected double-quoted property name in JSON at position 54  
+398a8c14-c1b7-44dd-b848-c53f865a4b64	 2023 Sep 004	013:19:12 	ReferenceError: json is not defined  
