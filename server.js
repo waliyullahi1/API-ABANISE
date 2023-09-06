@@ -43,7 +43,7 @@ app.use("/register", require("./route/api/register"));
 app.use("/login", require("./route/api/login"));
 app.use("/logout", require("./route/api/logout"));
 app.use("/refreshtoken", require("./route/refreshToken"));
-
+app.use("/getbal", require("./route/api/getBal"));
 const os = require("os");
 const networkInterfaces = os.networkInterfaces();
 let addresses = [];

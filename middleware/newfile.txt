@@ -487,3 +487,14 @@ dc6f1160-bbd5-4a91-9eb3-631ff3526c01	 2023 Sep 006	008:13:57 	POST	 undefined	 /
 25c39cee-7777-4941-ad8a-4253db4eaff5	 2023 Sep 006	008:37:55 	POST	 undefined	 /register
 80719c0b-3914-4a34-aeea-25c5693f50da	 2023 Sep 006	008:52:14 	POST	 undefined	 /register
 53a5dde6-cd9f-42f3-82b3-f60769a81211	 2023 Sep 006	011:23:03 	POST	 undefined	 /register
+c9390f7e-7342-4568-8544-6b4ae92216db	 2023 Sep 006	011:45:42 	GET	 undefined	 /login
+9b189412-3ec6-46b0-8c4a-1bdfd7063e46	 2023 Sep 006	011:56:32 	GET	 undefined	 /refreshtoken
+ee1161ed-7792-4bb6-9f7b-7877b96eba7d	 2023 Sep 006	011:57:35 	GET	 undefined	 /logout
+112168e6-7f88-4aa6-93bc-c502789f442d	 2023 Sep 006	012:51:27 	GET	 undefined	 /getbal
+737c6e2a-307f-4a86-9c17-19f8df9d5f57	 2023 Sep 006	012:53:13 	GET	 undefined	 /getbal
+1d40416a-6189-4ac6-b6f3-8039821c4a0a	 2023 Sep 006	012:55:17 	GET	 undefined	 /getbal
+84f302cf-e0ee-4b24-867c-ceb0e485669d	 2023 Sep 006	013:19:48 	GET	 undefined	 /getbal
+4595ab7d-e03a-489b-8583-4dab693d48a3	 2023 Sep 006	013:22:26 	GET	 undefined	 /getbal
+95883eda-5e39-4199-a199-3147d3739c75	 2023 Sep 006	013:24:55 	GET	 undefined	 /getbal
+47fca743-f861-4c52-bdd6-90e08a98aa26	 2023 Sep 006	013:24:57 	GET	 undefined	 /getbal
+2e372681-8622-4bf4-a7c9-b0d33f11d4dd	 2023 Sep 006	013:38:11 	GET	 undefined	 /getbal
