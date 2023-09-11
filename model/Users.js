@@ -40,6 +40,8 @@ const abaniseScheme = new Scheme({
     type: String,
     default: "wema-bank",
   },
+
+  walletBalance: String,
   refreshToken: String,
 });
 

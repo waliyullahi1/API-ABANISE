@@ -1,4 +1,4 @@
-const e = require('cors');
+
 const Employee = require('../model/Employees')
 
 

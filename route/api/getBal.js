@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const getCustomerByEmail = require("../../controllers/findUserBalFromPaystack");
+const getCustomerByAccountNumber = require("../../controllers/findUserBalFromPaystack");
 
-router.get("/", getCustomerByEmail);
+router.get("/", getCustomerByAccountNumber);
 
 module.exports = router;

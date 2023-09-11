@@ -1,8 +1,8 @@
 const User = require('../model/Users')
 const bcrypt = require("bcrypt");
-
+const getCustomerByAccountNumber = require("./findUserBalFromPaystack");
 const jwt = require("jsonwebtoken");
-
+const handletransaction = require('./transaction')
 
 const handleLogin = async (req, res) => {
   const { email, pwd } = req.body;
@@ -28,8 +28,13 @@ const handleLogin = async (req, res) => {
       process.env.REFRESH_TOKEN_SECRETY,
       { expiresIn: "1d" }
     );
-    // Saving refreshToken with current user
+    // Saving refreshToken || wallent balance with current user
+    const transa = await getCustomerByAccountNumber(foundUser.account_number);
+     const tran = handletransaction(foundUser._id, 200, "it is a go")
+    
+    foundUser.walletBalance = transa;
   foundUser.refreshToken = refreshToken
+     
 
     const result = await foundUser.save()
 
@@ -39,7 +44,7 @@ const handleLogin = async (req, res) => {
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ accessToken });
+    res.json({ accessToken, result, tran });
     
   } else {
     res.sendStatus(402);

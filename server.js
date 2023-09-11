@@ -44,6 +44,8 @@ app.use("/login", require("./route/api/login"));
 app.use("/logout", require("./route/api/logout"));
 app.use("/refreshtoken", require("./route/refreshToken"));
 app.use("/getbal", require("./route/api/getBal"));
+// app.use("/getbas", require("./controllers/findb"));
+
 const os = require("os");
 const networkInterfaces = os.networkInterfaces();
 let addresses = [];
