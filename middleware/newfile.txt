@@ -678,3 +678,12 @@ da2cfcae-2d05-45a0-b65d-16807b0b09ed	 2023 Sep 022	004:18:54 	POST	 undefined	 /
 1ada5db4-a25e-4e47-9d81-6839315e68a5	 2023 Sep 022	004:26:07 	POST	 undefined	 /sub/airtime
 328f5403-9c3f-4acb-8ccb-a272c3917088	 2023 Sep 022	004:28:14 	POST	 undefined	 /sub/airtime
 21338cb3-f244-4236-8bfc-85fd167f96f2	 2023 Sep 022	004:31:50 	POST	 undefined	 /sub/data
+e9308fdf-6a64-43bd-90b2-988ec84603f7	 2023 Sep 022	005:08:35 	GET	 undefined	 /transaction
+2bd3a294-84d5-48f9-8004-fef87a22d3da	 2023 Sep 022	005:09:51 	GET	 undefined	 /transaction
+a867ed0a-3c39-431d-92ae-94ad8fd176aa	 2023 Sep 022	005:10:13 	GET	 undefined	 /transaction/
+1557c94e-b972-49c7-9066-744ffdd6df74	 2023 Sep 022	005:11:14 	GET	 undefined	 /transaction
+f5bf5beb-5c52-45a4-9df8-6d68d0869a6e	 2023 Sep 022	005:16:48 	GET	 undefined	 /transaction
+3cb2e3e8-b5c0-4690-8318-1a623714158a	 2023 Sep 022	005:18:16 	GET	 undefined	 /transaction
+77da17f6-915d-4cc4-b5b7-ea3dc72e5b65	 2023 Sep 022	005:21:07 	GET	 undefined	 /transaction
+3fb433cb-6ed4-458f-9d09-bb7fe9ffb54f	 2023 Sep 022	008:17:58 	GET	 undefined	 /transaction
+4b94565a-8822-4d6e-a2e4-4a24f7d81a01	 2023 Sep 022	008:35:51 	GET	 undefined	 /transaction

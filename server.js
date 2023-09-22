@@ -45,6 +45,7 @@ app.use("/logout", require("./route/api/logout"));
 app.use("/refreshtoken", require("./route/refreshToken"));
 app.use("/getbal", require("./route/api/getBal"));
 app.use("/sub", require("./route/databundle"));
+app.use("/transaction", require("./route/transaction"));
 // app.use("/getbas", require("./controllers/findb"));
 
 

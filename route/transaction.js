@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const saveTransaction = require("../controllers/transaction");
+const transactionHistory = require("../controllers/transactionHistory");
 
-router.post("/", saveTransaction);
+router.get("/", transactionHistory);
 module.exports = router;
