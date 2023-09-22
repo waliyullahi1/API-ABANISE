@@ -60,7 +60,7 @@ if (!foundUser) return res.sendStatus(403);
     const { serviceID, amount, phone } = req.body;
         const request_id = `${await refrenceId()}fghu3`;
     
-    if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " go and found your wallet " });
+    if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " please found your wallet " });
     const data = {
        'request_id':request_id,
         'serviceID': serviceID,
@@ -75,15 +75,15 @@ if (!foundUser) return res.sendStatus(403);
         const time = await refrenceId();
         const dateOftran = await transactiondate();
         const status = response.data.response_description ;
-        const foundUserBal = foundUser.walletBalance;
+        const foundUserBal = foundUser.walletBalance - amount;
         console.log(foundUserBal)
-       
-        console.log(foundUser._id, request_id, amount, '333', serviceID, phone, serviceID, status, dateOftran)
-        
+               
          if (status === "TRANSACTION SUCCESSFUL") {
-          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, serviceID, phone, serviceID, "successful",dateOftran) 
+          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID}Airtime`, phone, serviceID, "successful",dateOftran)
+          foundUser.walletBalance = foundUserBal 
+          const result = await foundUser.save() 
          } else {
-          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, serviceID, phone, serviceID, "failed",dateOftran) 
+          const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID}Airtime`, phone, serviceID, "failed",dateOftran) 
         }
         
 
@@ -97,15 +97,24 @@ if (!foundUser) return res.sendStatus(403);
 
 
 const dataBundleForAllNewtwork = async (req, res) =>{
+  const cookies = req.cookies;
+  if (!cookies?.jwt) return res.sendStatus(401);
+  const refreshToken = cookies.jwt;
+  
+  const foundUser = await User.findOne({ refreshToken }).exec();
+  
+  if (!foundUser) return res.sendStatus(403);
+
+
     const { serviceID, amount, phone,billersCode, variation_code,} = req.body;
-    console.log('result');
-    // const date = format(now, 'yyyyMMddHHmmss') 
-    const response = await axios.get('http://worldtimeapi.org/api/timezone/Africa/Lagos');
-    const now = new Date();
-    const id = `${format(now, 'yyyyMMdd')}${hours}${format(now, 'mmss')}fkj2`
+
+        const request_id = `${await refrenceId()}fghu3`;
+    
+    if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " please found your wallet " });
+ 
     
     const data = {
-      request_id:id, 
+      request_id:request_id, 
       serviceID: serviceID,
       billersCode: billersCode, 
       variation_code:variation_code,// 'mtn-10mb-100', 
@@ -115,9 +124,20 @@ const dataBundleForAllNewtwork = async (req, res) =>{
 
     try {
         const response = await axios.post(url, data, {headers:headers});
+        const time = await refrenceId();
+        const dateOftran = await transactiondate();
+        const status = response.data.response_description ;
+        const foundUserBal = foundUser.walletBalance - amount;
         console.log(response.data.response_description, );  
         res.json(response.data)
         
+        if (status === "TRANSACTION SUCCESSFUL") {
+         const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID}`, phone, serviceID, "successful",dateOftran)
+         foundUser.walletBalance = foundUserBal 
+         const result = await foundUser.save()
+        } else {
+         const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID}`, phone, serviceID, "failed",dateOftran) 
+       }
 
     } catch (error) {
         console.error(error)
