@@ -4,6 +4,6 @@ const datebundle = require("../controllers/databundle");
 
 router.post("/airtime", datebundle.airtimeForAllNewtwork);
 
-router.post("/", datebundle.dataBundleForAllNewtwork);
+router.post("/data", datebundle.dataBundleForAllNewtwork);
 
 module.exports = router;

@@ -7,14 +7,37 @@ const TransactionSchema = new Schema({
     ref: 'Abanisedata'
   },
   transactionDate: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   },
   amount: {
     type: Number,
     required: true
   },
-  description: String
+  description: String,
+
+  refid:{
+    type: String,
+    required: true
+  },
+
+  wallet: {
+    type: String,
+    required: true
+  },
+  status:{
+    type: String,
+    required: true
+  },
+
+  recipient:{
+    type: String,
+    required: true
+  },
+  type:{
+    type: String,
+    required: true
+  }
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema);

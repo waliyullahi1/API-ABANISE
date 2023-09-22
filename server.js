@@ -47,6 +47,8 @@ app.use("/getbal", require("./route/api/getBal"));
 app.use("/sub", require("./route/databundle"));
 // app.use("/getbas", require("./controllers/findb"));
 
+
+
 const os = require("os");
 const networkInterfaces = os.networkInterfaces();
 let addresses = [];
@@ -61,6 +63,9 @@ for (const k in networkInterfaces) {
 }
 
 console.log(addresses);
+
+
+
 
 // app.use(verifyJWT);
 app.use("/employees", require("./route/api/employees"));

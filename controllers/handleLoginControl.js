@@ -6,7 +6,7 @@ const handletransaction = require('./transaction')
 
 const handleLogin = async (req, res) => {
   const { email, pwd } = req.body;
-  if (!email || !pwd)return res.status(400).json({ "message": "Username and password are required." });;
+  if (!email || !pwd)return res.status(400).json({ "message": "Username and password are required." });
   const foundUser = await User.findOne({email: email}).exec()
   if (!foundUser) return res.sendStatus(402); //Unauthorized
   // evaluate password
@@ -29,22 +29,22 @@ const handleLogin = async (req, res) => {
       { expiresIn: "1d" }
     );
     // Saving refreshToken || wallent balance with current user
-    const transa = await getCustomerByAccountNumber(foundUser.account_number);
-     const tran = handletransaction(foundUser._id, 200, "it is a go")
+    const account = await getCustomerByAccountNumber(foundUser.account_number);
     
-    foundUser.walletBalance = transa;
+    
+    foundUser.walletBalance = account;
   foundUser.refreshToken = refreshToken
      
 
     const result = await foundUser.save()
 
-    console.log(result);
+   
     res.cookie("jwt", refreshToken, {httpOnly: true,
       sameSite: "None",
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ accessToken, result, tran });
+    res.json({ accessToken, result, account });
     
   } else {
     res.sendStatus(402);
