@@ -11,7 +11,7 @@ const transactionHistory = async (req, res)=>{
     const userId = foundUser._id;
     console.log(foundUser);
     const transactions = await Transaction.find({ user:userId }); 
-    console.log(transactions)
+    res.json(transactions)
 }
 
 

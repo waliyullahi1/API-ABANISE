@@ -13,6 +13,8 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 const credentials = require("./middleware/credentials");
 
+
+
 //connect to mongoose
 connectDB();
 
@@ -46,6 +48,8 @@ app.use("/refreshtoken", require("./route/refreshToken"));
 app.use("/getbal", require("./route/api/getBal"));
 app.use("/sub", require("./route/databundle"));
 app.use("/transaction", require("./route/transaction"));
+app.use("/card", require("./route/card"));
+app.use("/resetpassword", require("./route/resetpassword"));
 // app.use("/getbas", require("./controllers/findb"));
 
 

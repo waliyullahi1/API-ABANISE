@@ -43,6 +43,7 @@ const abaniseScheme = new Scheme({
 
   walletBalance: String,
   refreshToken: String,
+  resetToken:String,
 });
 
 module.exports = mongoose.model("Abanisedata", abaniseScheme);

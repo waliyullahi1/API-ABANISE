@@ -28,3 +28,5 @@ dbc59282-9613-4f97-a316-48415d34e63f	 2023 Aug 031	007:04:31 	TypeError: allowOr
 b9cde4b1-f3f5-43fd-85d5-2c831fc52b4e	 2023 Sep 004	013:18:05 	SyntaxError: Expected double-quoted property name in JSON at position 54  
 398a8c14-c1b7-44dd-b848-c53f865a4b64	 2023 Sep 004	013:19:12 	ReferenceError: json is not defined  
 5002ca97-c6ec-496e-8adc-237e3eae0f2c	 2023 Sep 018	008:17:55 	SyntaxError: Unexpected string in JSON at position 58  
+118259f6-b071-451b-9095-2f0a4ec4e7ec	 2023 Sep 023	011:47:17 	ReferenceError: email is not defined  
+8e1d314d-947b-4632-9297-f481b4f34422	 2023 Sep 024	005:13:28 	MongooseError: Model.findOneAndUpdate() no longer accepts a callback  
