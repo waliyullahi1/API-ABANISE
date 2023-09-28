@@ -30,3 +30,13 @@ b9cde4b1-f3f5-43fd-85d5-2c831fc52b4e	 2023 Sep 004	013:18:05 	SyntaxError: Expec
 5002ca97-c6ec-496e-8adc-237e3eae0f2c	 2023 Sep 018	008:17:55 	SyntaxError: Unexpected string in JSON at position 58  
 118259f6-b071-451b-9095-2f0a4ec4e7ec	 2023 Sep 023	011:47:17 	ReferenceError: email is not defined  
 8e1d314d-947b-4632-9297-f481b4f34422	 2023 Sep 024	005:13:28 	MongooseError: Model.findOneAndUpdate() no longer accepts a callback  
+45a25c6f-73b9-4927-bd05-24550f413f07	 2023 Sep 026	004:20:24 	Error: Not allow  
+63294ba2-4fb5-4d9f-abe1-f1f888cf2297	 2023 Sep 026	004:20:25 	Error: Not allow  
+35cf2e23-3e4a-4d68-9ee3-cc366d0af47c	 2023 Sep 026	004:20:46 	Error: Not allow  
+f2056a09-cfbb-4bd8-a8fe-c72f0b195b52	 2023 Sep 026	005:28:42 	Error: Not allow  
+88b73e7c-6d90-4a18-b659-e1a02a10664c	 2023 Sep 026	005:48:55 	Error: Not allow  
+8e841ced-d4b0-40ca-bdb1-d997eb231ba2	 2023 Sep 026	006:00:17 	TypeError: allowedOrigins.includes is not a function  
+ec077da4-151e-46e2-9938-3333ee8de702	 2023 Sep 026	006:09:38 	TypeError: allowedOrigins.includes is not a function  
+988f99c3-dd6a-4a75-9d50-7852f8d886b4	 2023 Sep 026	006:13:59 	TypeError: allowedOrigins.includes is not a function  
+c7962234-bd36-4d77-914d-a9a6297829d0	 2023 Sep 026	006:20:14 	TypeError: allowedOrigins.includes is not a function  
+fa47a8dc-cd9c-46cb-a498-4345cd873b86	 2023 Sep 026	006:20:15 	TypeError: allowedOrigins.includes is not a function  

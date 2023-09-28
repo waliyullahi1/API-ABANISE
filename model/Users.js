@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Scheme = mongoose.Schema;
 
 const abaniseScheme = new Scheme({
-  first_name: {
+  username: {
     type: String,
     require: true,
   },
@@ -19,7 +19,7 @@ const abaniseScheme = new Scheme({
     type: String,
     require: true,
   },
-  last_name: {
+  transaction: {
     type: String,
     require: true,
   },

@@ -4,35 +4,39 @@ const generateVirtualAccount = require('./generateVirtualAcc')
 
 
 const handleNewUsers = async (req, res) => {
-  const { firstname, lastName, pwd, email, phone } = req.body;
-  if (!firstname || !lastName || !email || !phone || !pwd)
+  const { transaction, username, pwd, email, phone } = req.body;
+  if (!transaction || !username || !email || !phone || !pwd)
     return res
       .status(400)
       .json({ message: "usermane and password are require" });
   
 
-  //check of duplicate username from db
+  //check of duplicate username, phome, email, from db
   const duplicate = await Abanisedata.findOne({ email: email }).exec();
-
-  if (duplicate) return res.sendStatus(409); //Conflict
+  const duplicatePhone = await Abanisedata.findOne({ phone: phone }).exec();
+  const duplicateusername = await Abanisedata.findOne({ username: username }).exec()
+  if (duplicate) return res.status(409).json({ message: "email has already been used" });
+  if (duplicatePhone) return res.status(409).json({ message: "Phone has already been used" });
+  if (duplicateusername) return res.status(409).json({ message: "username has already been used" });
 
   try {
     //encrypt  the password
     const hashedPwd = await bcrypt.hash(pwd, 10);
-    const accountNumber = await generateVirtualAccount(
-      email,
-      firstname,
-      lastName,
-      phone
-    );
+    // const accountNumber = await generateVirtualAccount(
+    //   email,
+    //   firstname,
+    //   lastName,
+    //   phone
+    // );
     // store the new users
     const result = await Abanisedata.create({
-      first_name: firstname,
-      last_name: lastName,
+    
+     username: username,
+     transaction:transaction,
       phone: phone,
       password: hashedPwd,
       email: email,
-      account_number: accountNumber,
+      account_number: '111111',
     }); 
 
     console.log(result)

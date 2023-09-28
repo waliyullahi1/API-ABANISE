@@ -6,7 +6,7 @@ const path = require("path");
 const { logger } = require("./middleware/logEvent");
 const cors = require("cors");
 const errorHandle = require("./middleware/erroHandle");
-const corsOperations = require("./config/corsOptions");
+// const corsOptions = require("./config/corsOptions");
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
@@ -20,12 +20,18 @@ connectDB();
 
 app.use(logger);
 
-// Cross Origin Resource sharing
-app.use(cors(corsOperations));
+// Handle options credentials check - before CORS!
+// and fetch cookies credentials requirement
+ //app.use(credentials);
 
-//Handle options credentials check - before CORS
-// And fetch cookies Requirement
-app.use(credentials);
+// Cross Origin Resource sharing
+// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 //Build-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
