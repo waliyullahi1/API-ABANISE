@@ -47,6 +47,7 @@ app.use("/", express.static(path.join(__dirname, "/public")));
 
 //routes
 app.use("/", require("./route/root"));
+
 app.use("/register", require("./route/api/register"));
 app.use("/login", require("./route/api/login"));
 app.use("/logout", require("./route/api/logout"));
@@ -56,6 +57,9 @@ app.use("/sub", require("./route/databundle"));
 app.use("/transaction", require("./route/transaction"));
 app.use("/card", require("./route/card"));
 app.use("/resetpassword", require("./route/resetpassword"));
+app.use("/veryfyJWT", require("./middleware/verifyJWT"));
+app.use("/valid", require("./controllers/verify"));
+
 // app.use("/getbas", require("./controllers/findb"));
 
 

@@ -15,9 +15,11 @@ const handleNewUsers = async (req, res) => {
   const duplicate = await Abanisedata.findOne({ email: email }).exec();
   const duplicatePhone = await Abanisedata.findOne({ phone: phone }).exec();
   const duplicateusername = await Abanisedata.findOne({ username: username }).exec()
+
+  if (duplicateusername) return res.status(409).json({ message: "username has already been used" });
   if (duplicate) return res.status(409).json({ message: "email has already been used" });
   if (duplicatePhone) return res.status(409).json({ message: "Phone has already been used" });
-  if (duplicateusername) return res.status(409).json({ message: "username has already been used" });
+ 
 
   try {
     //encrypt  the password
@@ -43,7 +45,7 @@ const handleNewUsers = async (req, res) => {
     
 
     
-    res.status(201).json({ "success ": `new ${result.email} was created ` });
+    res.status(201).json({ success : `your account created sucessful ` });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

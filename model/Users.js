@@ -42,8 +42,12 @@ const abaniseScheme = new Scheme({
   },
 
   walletBalance: String,
-  refreshToken: String,
-  resetToken:String,
+  resetToken: String,
+  refreshToken: {
+    type: String,
+    default: undefined,
+    index: { expires: '1m' }, 
+  },
 });
 
 module.exports = mongoose.model("Abanisedata", abaniseScheme);

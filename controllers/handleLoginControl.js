@@ -8,7 +8,7 @@ const handleLogin = async (req, res) => {
   const { email, pwd } = req.body;
   if (!email || !pwd)return res.status(400).json({ "message": "Username and password are required." });
   const foundUser = await User.findOne({email: email}).exec()
-  if (!foundUser) return res.sendStatus(402); //Unauthorized
+  if (!foundUser) return res.status(402).json({ message: "Invalid email" });
   // evaluate password
   const match = await bcrypt.compare(pwd, foundUser.password);
   if (match) {
@@ -26,28 +26,31 @@ const handleLogin = async (req, res) => {
     const refreshToken = jwt.sign(
       { email: foundUser.email },
       process.env.REFRESH_TOKEN_SECRETY,
-      { expiresIn: "1d" }
+      { expiresIn: "1m" }
     );
     // Saving refreshToken || wallent balance with current user
-    const account = await getCustomerByAccountNumber(foundUser.account_number);
+    // const account = await getCustomerByAccountNumber(foundUser.account_number);
     
     
-    foundUser.walletBalance = account;
+    // foundUser.walletBalance = account;
   foundUser.refreshToken = refreshToken
      
 
     const result = await foundUser.save()
 
    
-    res.cookie("jwt", refreshToken, {httpOnly: true,
-      sameSite: "None",
+    res.cookie("jwt", refreshToken, { httpOnly: true,
       secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: 'strict',
+      maxAge: 60000 ,
+      // sameSite: "None",
+      // secure: true,
+      // maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ accessToken, result, account });
+    res.json({ accessToken, result,  });
     
   } else {
-    res.sendStatus(402);
+    return res.status(402).json({ message: "Invalid email or Password " });
   }
 };
 

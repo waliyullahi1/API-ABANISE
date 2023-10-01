@@ -40,3 +40,15 @@ ec077da4-151e-46e2-9938-3333ee8de702	 2023 Sep 026	006:09:38 	TypeError: allowed
 988f99c3-dd6a-4a75-9d50-7852f8d886b4	 2023 Sep 026	006:13:59 	TypeError: allowedOrigins.includes is not a function  
 c7962234-bd36-4d77-914d-a9a6297829d0	 2023 Sep 026	006:20:14 	TypeError: allowedOrigins.includes is not a function  
 fa47a8dc-cd9c-46cb-a498-4345cd873b86	 2023 Sep 026	006:20:15 	TypeError: allowedOrigins.includes is not a function  
+9a36b9a7-af19-44d0-a669-ef2ed4307ee5	 2023 Sep 028	009:31:09 	ReferenceError: jwt is not defined  
+2fe2ee16-fccd-4b19-b68a-d067a633996f	 2023 Sep 028	011:15:11 	ReferenceError: jwt is not defined  
+e52001bc-5f54-4571-b585-fc3466260ff8	 2023 Sep 028	011:17:03 	ReferenceError: jwt is not defined  
+00a93089-9b26-4f01-9aa7-b41ba7cb2519	 2023 Sep 029	002:36:08 	TypeError: Cannot read properties of null (reading 'exp')  
+d1c0ebba-52ed-48a2-9f9b-0634e66f0b56	 2023 Sep 029	002:53:16 	TypeError: Cannot read properties of null (reading 'exp')  
+ccb4e2ae-3ce5-429a-8c5e-32cda9fa2721	 2023 Sep 029	002:54:25 	TypeError: Cannot read properties of null (reading 'exp')  
+2c3e5d5e-6bd8-438c-80c8-5661843e7299	 2023 Oct 001	004:26:10 	ReferenceError: s is not defined  
+c58ef57e-9206-4636-91ee-c21cfa942551	 2023 Oct 001	004:26:12 	ReferenceError: s is not defined  
+89f861bd-b506-416c-aad2-7358c120f863	 2023 Oct 001	004:26:13 	ReferenceError: s is not defined  
+fd52d83e-2244-4ce3-a1b7-6a3f631d8a43	 2023 Oct 001	004:26:13 	ReferenceError: s is not defined  
+2c52f450-9896-4fe1-b5a0-920ffb4ea17d	 2023 Oct 001	004:26:14 	ReferenceError: s is not defined  
+5b078f86-8e73-490a-8420-170d08b46a16	 2023 Oct 001	004:26:14 	ReferenceError: s is not defined  
