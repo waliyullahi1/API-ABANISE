@@ -26,7 +26,7 @@ const handleLogin = async (req, res) => {
     const refreshToken = jwt.sign(
       { email: foundUser.email },
       process.env.REFRESH_TOKEN_SECRETY,
-      { expiresIn: "1m" }
+      { expiresIn: "60m" }
     );
     // Saving refreshToken || wallent balance with current user
     // const account = await getCustomerByAccountNumber(foundUser.account_number);
@@ -42,10 +42,10 @@ const handleLogin = async (req, res) => {
     res.cookie("jwt", refreshToken, { httpOnly: true,
       secure: true,
       sameSite: 'strict',
-      maxAge: 60000 ,
+  
       // sameSite: "None",
       // secure: true,
-      // maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ accessToken, result,  });
     

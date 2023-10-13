@@ -4,6 +4,6 @@ const savePin = require("../controllers/savePin");
 const sellingcardPin = require('../controllers/cardSelling')
 
 router.post("/save", savePin);
-router.get("/sell", sellingcardPin)
+router.post("/sell", sellingcardPin)
 
 module.exports = router;

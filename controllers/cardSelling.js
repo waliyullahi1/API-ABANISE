@@ -35,7 +35,7 @@ transactiondate();
 
 
 const sellingcardPin = async (req, res) => {
-    const { examType, numCodes, amount } = req.body; 
+    const { examType, numCodes, amount, TransactionCode, email } = req.body; 
     if (!examType || !numCodes || !amount  )return res.status(400).json({ message: " and examtype are number you want " });
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(401);
@@ -44,6 +44,7 @@ const sellingcardPin = async (req, res) => {
     const foundUser = await User.findOne({ refreshToken }).exec();
     
     if (!foundUser) return res.sendStatus(403);
+    if(foundUser.transaction !== TransactionCode) return res.status(403).json({ "message": " incorrect transactions pin  " });
     if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " please found your wallet " });
     try {
       const time = await refrenceId();
@@ -54,15 +55,19 @@ const sellingcardPin = async (req, res) => {
       const codes = await Card_pin.find({ name: examType }).limit(numCodes);
   
       if (codes.length === 0) {
-        return res.status(404).json({ message: 'No codes available for this exam type.' });
+        return res.status(401).json({ message: 'No codes available for this exam type.' });
       }
       const notexist = await Card_pin.findOne({ name: examType }).exec()
       if(!notexist) return res.status(403).json({ message: 'No cardname available for this exam type.' })
       if(codes.length < numCodes ) return res.status(403).json({ message: 'We dont have up to card you request the ' })
       res.json(codes);
-    const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${examType}`, foundUser.phone, `Buy ${numCodes} ${examType}`, "successful",dateOftran)
+    const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${examType}`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin as been sent to this email ${email} `, "successful",dateOftran)
     foundUser.walletBalance = foundUserBal 
     const result = await foundUser.save() 
+   
+
+   
+  
       for (let code of codes) {
         await Card_pin.deleteOne({ _id: code._id });
       }

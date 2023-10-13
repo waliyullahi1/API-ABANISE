@@ -10,6 +10,8 @@ const cardScheme = new Scheme({
     type: String,
     require: true,
   },
+
+  seriaNo: String 
  
 });
 

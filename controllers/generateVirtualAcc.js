@@ -18,7 +18,7 @@ const generateVirtualAccount = async (customerEmail,firstName,lastName,phone
 
   try {
     const response = await axios.post(url, data, { headers: headers });
-    return response.data.data.account_number;
+    return response.data.data.account_number, response.data.data.account_name;
   } catch (error) {
     console.error(error);
   }

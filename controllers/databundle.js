@@ -48,8 +48,8 @@ transactiondate();
 
 
 const airtimeForAllNewtwork = async (req, res) =>{
-  
-    const cookies = req.cookies;
+   
+     const cookies = req.cookies;
 if (!cookies?.jwt) return res.sendStatus(401);
 const refreshToken = cookies.jwt;
 
@@ -57,10 +57,11 @@ const foundUser = await User.findOne({ refreshToken }).exec();
 
 if (!foundUser) return res.sendStatus(403);
 
-    const { serviceID, amount, phone } = req.body;
+    const { serviceID, amount, phone, TransactionCode } = req.body;
         const request_id = `${await refrenceId()}fghu3`;
-    
-    if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " please found your wallet " });
+        
+        if(foundUser.transaction !== TransactionCode) return res.status(401).json({ "message": " incorrect transactions pin  " });
+    if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " insufficient balance  " });
     const data = {
        'request_id':request_id,
         'serviceID': serviceID,
@@ -75,15 +76,16 @@ if (!foundUser) return res.sendStatus(403);
         const time = await refrenceId();
         const dateOftran = await transactiondate();
         const status = response.data.response_description ;
+
         const foundUserBal = foundUser.walletBalance - amount;
         console.log(foundUserBal)
                
-         if (status === "TRANSACTION SUCCESSFUL") {
-          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID}Airtime`, phone, serviceID, "successful",dateOftran)
+         if (status === "TRANSACTION SUCCESSFUL" || status === "TRANSACTION IS PROCESSING ") {
+          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID} Airtime`, phone, serviceID, status,dateOftran)
           foundUser.walletBalance = foundUserBal 
           const result = await foundUser.save() 
          } else {
-          const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID}Airtime`, phone, serviceID, "failed",dateOftran) 
+          const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID} Airtime`, phone, serviceID, "failed",dateOftran) 
         }
         
 
@@ -106,10 +108,11 @@ const dataBundleForAllNewtwork = async (req, res) =>{
   if (!foundUser) return res.sendStatus(403);
 
 
-    const { serviceID, amount, phone,billersCode, variation_code,} = req.body;
+    const { serviceID, amount, phone, billersCode, variation_code, TransactionCode} = req.body;
 
         const request_id = `${await refrenceId()}fghu3`;
-    
+        if(foundUser.transaction !== TransactionCode) return res.status(403).json({ "message": " incorrect transactions pin  " });
+ 
     if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " please found your wallet " });
  
     
