@@ -1,9 +1,8 @@
 const axios = require('axios')
-const {format} = require('date-fns')
 const User = require("../model/Users");
 const jwt = require("jsonwebtoken");
 const handletransaction = require('./transaction')
-
+const { format, parseISO } = require('date-fns')
 
 
 const url = "https://sandbox.vtpass.com/api/pay"
@@ -16,7 +15,18 @@ const hours = "14"
 
 
 
-
+async function arrangeDate() {
+  try {
+    const response = await axios.get('http://worldtimeapi.org/api/timezone/Africa/Lagos');
+    let time = response.data.datetime;
+    time = time.split('.')[0];
+     time = time.replace('T', ' ');
+    return time;
+  } catch (error) {
+    console.error(error);
+  }
+}
+arrangeDate();
 
 async function refrenceId() {
   try {
@@ -38,7 +48,13 @@ async function transactiondate() {
     let time = response.data.datetime;
     time = time.split('.')[0];
      time = time.replace('T', ' ');
-    return time;
+
+     const date = parseISO(time);
+    
+     const formattedDate = format(date, 'MMM-ddd-yyyy hh:mm aaa');
+
+    return formattedDate;
+   
   } catch (error) {
     console.error(error);
   }
@@ -57,7 +73,7 @@ const foundUser = await User.findOne({ refreshToken }).exec();
 
 if (!foundUser) return res.sendStatus(403);
 
-    const { serviceID, amount, phone, TransactionCode } = req.body;
+    const { serviceID, amount, phone, TransactionCode,  } = req.body;
         const request_id = `${await refrenceId()}fghu3`;
         
         if(foundUser.transaction !== TransactionCode) return res.status(401).json({ "message": " incorrect transactions pin  " });
@@ -67,7 +83,8 @@ if (!foundUser) return res.sendStatus(403);
         'serviceID': serviceID,
         'billersCode': phone, 
         'amount': amount, 
-        'phone': phone
+        'phone': phone,
+        
     }
 
     try {
@@ -76,16 +93,16 @@ if (!foundUser) return res.sendStatus(403);
         const time = await refrenceId();
         const dateOftran = await transactiondate();
         const status = response.data.response_description ;
-
-        const foundUserBal = foundUser.walletBalance - amount;
-        console.log(foundUserBal)
+        const arrangedate = await arrangeDate()
+        
+        
                
          if (status === "TRANSACTION SUCCESSFUL" || status === "TRANSACTION IS PROCESSING ") {
-          const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID} Airtime`, phone, serviceID, status,dateOftran)
-          foundUser.walletBalance = foundUserBal 
+          const foundUserBal = foundUser.walletBalance - amount;
+              const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${ serviceID.toUpperCase()}  For this phone number ${phone} `, 'successfull', dateOftran, `${ serviceID.toUpperCase()} Airtime`)
           const result = await foundUser.save() 
          } else {
-          const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID} Airtime`, phone, serviceID, "failed",dateOftran) 
+          const tran = await handletransaction(arrangedate, foundUser._id, time,`00.00`, foundUser.walletBalance, `Airtime`, phone, `Dear Customer, You are try to Buy ${amount} Airtime ${ serviceID.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${serviceID.toUpperCase()} Airtime`)
         }
         
 
@@ -108,7 +125,7 @@ const dataBundleForAllNewtwork = async (req, res) =>{
   if (!foundUser) return res.sendStatus(403);
 
 
-    const { serviceID, amount, phone, billersCode, variation_code, TransactionCode} = req.body;
+    const { serviceID, amount, phone, billersCode, variation_code,  TransactionCode, datatype} = req.body;
 
         const request_id = `${await refrenceId()}fghu3`;
         if(foundUser.transaction !== TransactionCode) return res.status(403).json({ "message": " incorrect transactions pin  " });
@@ -133,14 +150,16 @@ const dataBundleForAllNewtwork = async (req, res) =>{
         const foundUserBal = foundUser.walletBalance - amount;
         console.log(response.data.response_description, );  
         res.json(response.data)
+        const arrangedate = await arrangeDate()
+        if (status === "TRANSACTION SUCCESSFUL" || status === "TRANSACTION IS PROCESSING ") {
+          const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype} data bundle  For this phone number ${phone} `, status, dateOftran, `${ serviceID.toUpperCase()} Airtime`)
+           
+          const result = await foundUser.save() 
+         } else {
+          const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, `Data Bundle`, phone, `Dear Customer, You are try to shared ${datatype} Data to  ${phone} and is not successfull try it again thanks.`, 'failed', dateOftran, `${serviceID.toUpperCase()} Airtime`)
+        }
         
-        if (status === "TRANSACTION SUCCESSFUL") {
-         const tran = await handletransaction(foundUser._id, time, amount, foundUserBal, `${serviceID}`, phone, serviceID, "successful",dateOftran)
-         foundUser.walletBalance = foundUserBal 
-         const result = await foundUser.save()
-        } else {
-         const tran = await handletransaction(foundUser._id, time, "00.00", foundUserBal, `${serviceID}`, phone, serviceID, "failed",dateOftran) 
-       }
+
 
     } catch (error) {
         console.error(error)

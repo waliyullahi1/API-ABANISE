@@ -5,7 +5,7 @@ const savePin = async (req, res)=>{
     return res
       .status(400)
       .json({ message: "name and pin are require" });
-      const duplicate = await Card_pin.findOne({ code: pin }).exec()
+      const duplicate = await Card_pin.findOne({ pin: pin }).exec()
       if(duplicate) return res.sendStatus(409);
       const result = await Card_pin.create({
         name:name, 

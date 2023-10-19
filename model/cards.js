@@ -6,7 +6,7 @@ const cardScheme = new Scheme({
     type: String,
     require: true,
   },
-  code: {
+  pin: {
     type: String,
     require: true,
   },

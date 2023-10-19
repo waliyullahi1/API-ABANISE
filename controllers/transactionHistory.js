@@ -9,7 +9,6 @@ const transactionHistory = async (req, res)=>{
     const refreshToken = cookies.jwt;
     const foundUser = await User.findOne({ refreshToken }).exec();
     const userId = foundUser._id;
-    console.log(foundUser);
     const transactions = await Transaction.find({ user:userId }).sort({transactionDate: -1}); 
     res.json(transactions)
 }
