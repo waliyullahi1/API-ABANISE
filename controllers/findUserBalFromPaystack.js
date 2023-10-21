@@ -1,39 +1,19 @@
 const axios = require("axios");
+const User = require("../model/Users");
+const fund = require("../model/found");
+const savenewFund = require('./fund');
+const found = require("../model/found");
 
-async function getLastTransactionIdFromPaystack(customerId) {
-  const url = `https://api.paystack.co/transaction?customer=${customerId}`;
-  const headers = {
-    Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
-    "Content-Type": "application/json",
-  };
-
-  try {
-    const response = await axios.get(url, { headers: headers });
-    const transactions = response.data.data;
-
-    if (transactions.length > 0) {
-      // Sort transactions by ID in descending order
-      transactions.sort((a, b) => b.id - a.id);
-
-      // Return the ID of the last transaction
-      return transactions[0].id;
-    } else {
-      // Return a default value if the customer has no transactions
-      return '0';
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 
 const getCustomerIdByAccountNumber = async (accountNumber) => {
+
   const url = `https://api.paystack.co/customer?account_number=${accountNumber}`;
   const headers = {
     Authorization: `Bearer ${process.env.PAYSTACK_SECRETY_CODE}`,
     "Content-Type": "application/json",
   };
-
+  
   try {
     const response = await axios.get(url, { headers: headers });
     const customerId = response.data.data[0].id;
@@ -46,37 +26,50 @@ const getCustomerIdByAccountNumber = async (accountNumber) => {
   }
 };
 
+
+
 const getCustomerByAccountNumber = async (customeracc) => {
+  
+   const foundUser = await User.findOne({ account_number: customeracc }).exec();
+  if (!foundUser) return res.sendStatus(403);
+  
   const customerId = await getCustomerIdByAccountNumber(customeracc);
+  const response = await axios.get('https://api.paystack.co/transaction', {
+    headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRETY_CODE}` },
+    params: { customer: customerId }
+  });
 
-  const url = `https://api.paystack.co/transaction?customer=${customerId}`;
-  const headers = {
-    Authorization: `Bearer ${process.env.PAYSTACK_SECRETY_CODE}`,
-    "Content-Type": "application/json",
-  };
+  const userId = foundUser._id;
+  const lastTransaction = await fund.findOne({ user:userId }).sort({transactionDate: -1}).limit(1);
+  const lastTransactionId = lastTransaction ? lastTransaction.transactionId : 0;
+  let total = 0;
 
-  try {
-    const response = await axios.get(url, { headers: headers });
-    const transactions = response.data.data;
-    let balance = 0;
-    let lastTransactionId = await getLastTransactionId(customerId); // You need to implement this function
+  for (const transaction of response.data.data) {
+    if (transaction.status === 'success') {
+      const existingTransaction = await fund.findOne({ transactionId: transaction.id });
+      if (!existingTransaction) {
+         console.log(foundUser._id, transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt));
+        const tran = await savenewFund(foundUser.email , transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt));
+          console.log(lastTransaction);
+        if (transaction.id > lastTransactionId) {
+          let amount = transaction.amount / 100; // convert from kobo to naira
+          total += amount;
+          console.log(amount);
+           // Add the amount to the total of new transactions
+        }
 
-    transactions.forEach((transaction) => {
-      if (transaction.status === "success" && transaction.id > lastTransactionId) {
-        balance += transaction.amount / 100;
-        lastTransactionId = Math.max(lastTransactionId, transaction.id);
       }
-    });
-
-    console.log(`The balance of all new transactions for ${customerId} is ${balance}`);
-    
-    await saveLastTransactionId(customerId, lastTransactionId); // You need to implement this function
-
-    return balance;
-  } catch (error) {
-    console.error(error);
+              
+    }
   }
-};
+
+
+
+
+console.log(total);
+ 
+  return total; 
+}
 
 
 

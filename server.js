@@ -61,8 +61,8 @@ app.use("/resetpassword", require("./route/resetpassword"));
 app.use("/veryfyJWT", require("./middleware/verifyJWT"));
 app.use("/valid", require("./controllers/verify"));
 app.use("/dashboard", require("./controllers/dashboard"));
-// app.use("/getbas", require("./controllers/findb"));
 
+app.use("/fund", require("./route/api/bal"));
 
 
 const os = require("os");

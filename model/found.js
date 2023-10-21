@@ -1,30 +1,29 @@
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const FoundHistorySchema = new Schema({
+const FoundSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectId,
-    ref: 'Abanisedata'
+    type: String,
+    required: true
+    },
+  customerId:{
+    type: String,
+    required: true
   },
-  transactionDate: {
+  transactionId: {
     type: String,
     required: true
   },
 
-  arrangeDate: {
-    type: String,
-    required: true
-  },
-  amount: {
+  amount:{
     type: Number,
     required: true
   },
-  description: String,
 
-  refid:{
+  timestamp:{
     type: String,
     required: true
   },
-
 
   status:{
     type: String,
@@ -33,4 +32,4 @@ const FoundHistorySchema = new Schema({
 
 });
 
-module.exports = mongoose.model('FoundHistory', FoundHistorySchema );
+module.exports = mongoose.model('Found', FoundSchema );
