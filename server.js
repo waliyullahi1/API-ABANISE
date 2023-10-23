@@ -62,7 +62,7 @@ app.use("/veryfyJWT", require("./middleware/verifyJWT"));
 app.use("/valid", require("./controllers/verify"));
 app.use("/dashboard", require("./controllers/dashboard"));
 
-app.use("/fund", require("./route/api/bal"));
+app.use("/fund", require("./route/api/fund"));
 
 
 const os = require("os");

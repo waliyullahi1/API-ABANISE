@@ -3,7 +3,7 @@ const User = require("../model/Users");
 const fund = require("../model/found");
 const savenewFund = require('./fund');
 const found = require("../model/found");
-
+const { format, parseISO } = require('date-fns')
 
 
 const getCustomerIdByAccountNumber = async (accountNumber) => {
@@ -49,7 +49,8 @@ const getCustomerByAccountNumber = async (customeracc) => {
       const existingTransaction = await fund.findOne({ transactionId: transaction.id });
       if (!existingTransaction) {
          console.log(foundUser._id, transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt));
-        const tran = await savenewFund(foundUser.email , transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt));
+         const date = parseISO(transaction.createdAt);
+         const tran = await savenewFund(foundUser.email , transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt), format(date, 'MMM, ddd, yyyy hh:mm aaa'));
           console.log(lastTransaction);
         if (transaction.id > lastTransactionId) {
           let amount = transaction.amount / 100; // convert from kobo to naira

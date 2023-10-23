@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const Scheme = mongoose.Schema;
 
 const abaniseScheme = new Scheme({
-  username: {
+  firstname: {
+    type: String,
+    require: true,
+  },
+
+  lastName: {
     type: String,
     require: true,
   },
@@ -34,14 +39,21 @@ const abaniseScheme = new Scheme({
   },
   account_number: {
     type: String,
-    default: "wema-bank",
+    require: true,
+  },
+  account_name: {
+    type: String,
+    require: true,
   },
   preferred_bank: {
     type: String,
     default: "wema-bank",
   },
 
-  walletBalance: Number,
+  walletBalance: {
+    type: Number,
+    default: 0, 
+  },
   resetToken: String,
   refreshToken: {
     type: String,

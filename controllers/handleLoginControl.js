@@ -2,7 +2,7 @@ const User = require('../model/Users')
 const bcrypt = require("bcrypt");
 const getCustomerByAccountNumber = require("./findUserBalFromPaystack");
 const jwt = require("jsonwebtoken");
-const handletransaction = require('./transaction')
+
 
 const handleLogin = async (req, res) => {
   const { email, pwd } = req.body;
@@ -29,9 +29,9 @@ const handleLogin = async (req, res) => {
       { expiresIn: "60m" }
     );
     // Saving refreshToken || wallent balance with current user
-    // const account = await getCustomerByAccountNumber(foundUser.account_number);
-    
-    
+    const newfound = await getCustomerByAccountNumber(foundUser.account_number);
+    foundUser.walletBalance += newfound;
+    console.log(newfound, '0000000');
     // foundUser.walletBalance = account;
   foundUser.refreshToken = refreshToken
      

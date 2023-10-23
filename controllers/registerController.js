@@ -4,8 +4,8 @@ const generateVirtualAccount = require('./generateVirtualAcc')
 
 
 const handleNewUsers = async (req, res) => {
-  const { transaction, username, pwd, email, phone } = req.body;
-  if (!transaction || !username || !email || !phone || !pwd)
+  const { transaction, lastName, firstname, pwd, email, phone } = req.body;
+  if (!transaction || !lastName || !firstname || !email || !phone || !pwd)
     return res
       .status(400)
       .json({ message: "usermane and password are require" });
@@ -14,9 +14,7 @@ const handleNewUsers = async (req, res) => {
   //check of duplicate username, phome, email, from db
   const duplicate = await Abanisedata.findOne({ email: email }).exec();
   const duplicatePhone = await Abanisedata.findOne({ phone: phone }).exec();
-  const duplicateusername = await Abanisedata.findOne({ username: username }).exec()
-
-  if (duplicateusername) return res.status(409).json({ message: "username has already been used" });
+  
   if (duplicate) return res.status(409).json({ message: "email has already been used" });
   if (duplicatePhone) return res.status(409).json({ message: "Phone has already been used" });
  
@@ -24,21 +22,23 @@ const handleNewUsers = async (req, res) => {
   try {
     //encrypt  the password
     const hashedPwd = await bcrypt.hash(pwd, 10);
-    // const accountNumber = await generateVirtualAccount(
-    //   email,
-    //   firstname,
-    //   lastName,
-    //   phone
-    // );
-    // store the new users
-    const result = await Abanisedata.create({
     
-     username: username,
+    const { account_number, account_name } = await generateVirtualAccount(
+      email,
+      firstname,
+      lastName,
+      phone
+    );
+  
+    const result = await Abanisedata.create({
+      lastName:lastName,
+      firstname: firstname,
      transaction:transaction,
       phone: phone,
       password: hashedPwd,
       email: email,
-      account_number: '111111',
+      account_number: account_number,
+      account_name:account_name
     }); 
 
     console.log(result)

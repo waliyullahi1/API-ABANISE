@@ -15,11 +15,12 @@ async function transactiondate() {
 transactiondate();
 
 
-const savenewFund = (userid, customerId, amounts, status, transactionType, transactionId, timestamp) =>{
+const savenewFund = (email, customerId, amounts, status, transactionType, transactionId, timestamp, dateShow) =>{
     const arrangeDate = transactiondate()
 const newFund = new Found({
   transactionId: transactionId,
-  user:userid,
+  dateShow:dateShow,
+  email:email,
   customerId:customerId,
   amount: amounts / 100, // convert from kobo to naira
   transactionType:transactionType,

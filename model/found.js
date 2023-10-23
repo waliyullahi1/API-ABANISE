@@ -2,10 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FoundSchema = new Schema({
-  user: {
+  email: {
     type: String,
     required: true
     },
+    dateShow:{
+      type: String,
+      required: true
+      },
   customerId:{
     type: String,
     required: true
