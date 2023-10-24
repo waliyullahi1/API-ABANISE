@@ -27,7 +27,7 @@ app.use(logger);
 // Cross Origin Resource sharing
 // app.use(cors(corsOptions));
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://abaniseedu.vercel.app',
   credentials: true
 };
 
