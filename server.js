@@ -46,9 +46,9 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "/public")));
 
 //routes
-app.use("/", require("./route/root"));
+// app.use("/", require("./route/root"));
 
-app.use("/register", require("./route/api/register"));
+app.use("/", require("./route/api/register"));
 app.use("/login", require("./route/api/login"));
 app.use("/logout", require("./route/api/logout"));
 app.use("/refreshtoken", require("./route/refreshToken"));

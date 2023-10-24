@@ -2971,3 +2971,14 @@ bc1d58f2-9535-430f-bd01-f0d510f7846c	 2023 Oct 023	009:47:12 	OPTIONS	 http://lo
 47f77268-8209-4b3b-aadb-d64f44efe492	 2023 Oct 023	010:12:42 	GET	 http://localhost:5173	 /dashboard
 62c4756f-fd7d-4ef7-b1ec-89acbdc38cdf	 2023 Oct 023	010:12:47 	OPTIONS	 http://localhost:5173	 /fund
 83e576d5-6d39-41b1-a1f7-9a4c4b17c863	 2023 Oct 023	010:12:47 	GET	 http://localhost:5173	 /fund
+58af014c-849e-492f-80c8-7c3d29519d91	 2023 Oct 024	003:29:02 	GET	 undefined	 /
+18b3ece3-4d0d-4c97-a39b-4df922134407	 2023 Oct 024	003:29:16 	GET	 undefined	 /favicon.ico
+c426e2da-dd34-4bdc-b404-4f805ddbc4a9	 2023 Oct 024	004:05:40 	GET	 undefined	 /login
+92705b5b-df9f-41d7-ad49-548f6c5af87d	 2023 Oct 024	004:05:52 	GET	 undefined	 /login
+c11a9ae3-f632-4e25-8ff9-ca1eb847766c	 2023 Oct 024	004:06:16 	GET	 undefined	 /register
+9c01b705-c985-4a15-a96b-b1e2554d6e69	 2023 Oct 024	004:06:30 	GET	 undefined	 /
+473dd945-d4a7-4002-874c-7745b0dca45b	 2023 Oct 024	004:06:31 	GET	 undefined	 /css/style.css
+0df21e45-c302-48ed-8ecb-f24867e12913	 2023 Oct 024	004:06:32 	GET	 undefined	 /image/imag3.jpg
+4c326210-ccff-4821-a757-e45da0c36a70	 2023 Oct 024	004:07:13 	GET	 undefined	 /favicon.ico
+22c880c2-cce6-4da9-b126-eb44658f77be	 2023 Oct 024	005:23:13 	GET	 undefined	 /
+0ea63f69-c748-4f19-9dfb-320de584bb60	 2023 Oct 024	005:23:22 	GET	 undefined	 /favicon.ico
