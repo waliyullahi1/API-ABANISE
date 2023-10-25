@@ -64,7 +64,10 @@ const  generateVirtualAccount = async (customerEmail,firstName,lastName,phone) =
     
     const virtualAccountResponse = await axios.post(virtualAccountUrl, virtualAccountData, { headers });
     console.log(virtualAccountResponse.data.data.account_name,virtualAccountResponse.data.data.account_number);
-    return virtualAccountResponse.data.data.account_name, virtualAccountResponse.data.data.account_number;
+    return{
+      accountName: virtualAccountResponse.data.data.account_name,
+      accountNumber: virtualAccountResponse.data.data.account_number
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while generating the virtual account' });

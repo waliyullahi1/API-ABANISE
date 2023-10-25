@@ -23,7 +23,7 @@ const handleNewUsers = async (req, res) => {
     //encrypt  the password
     const hashedPwd = await bcrypt.hash(pwd, 10);
     
-    const {account_name, account_number } = await generateVirtualAccount(
+    const { accountName, accountNumber } = await generateVirtualAccount(
       email,
       firstname,
       lastName,
@@ -37,8 +37,8 @@ const handleNewUsers = async (req, res) => {
       phone: phone,
       password: hashedPwd,
       email: email,
-      account_number: account_number,
-      account_name:account_name
+      account_number:accountNumber ,
+      account_name:accountName
     }); 
 
     console.log(result)
