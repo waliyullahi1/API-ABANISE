@@ -28,7 +28,8 @@ app.use(logger);
 // app.use(cors(corsOptions));
 const corsOptions = {
   origin: 'http://localhost:5173',
-  credentials: true
+  credentials: true,
+  // optionsSuccessStatus:40
 };
 
 app.use(cors(corsOptions));
@@ -61,6 +62,7 @@ app.use("/resetpassword", require("./route/resetpassword"));
 app.use("/veryfyJWT", require("./middleware/verifyJWT"));
 app.use("/valid", require("./controllers/verify"));
 app.use("/dashboard", require("./controllers/dashboard"));
+app.use("/virtual", require("./route/api/virtual"));
 
 app.use("/fund", require("./route/api/fund"));
 
