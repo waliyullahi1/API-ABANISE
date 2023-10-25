@@ -2995,3 +2995,7 @@ b0818a46-443a-4f38-aea8-75bfa29141e9	 2023 Oct 025	003:49:17 	POST	 undefined	 /
 2e74abb4-c9f1-453e-8d43-ab73527504bc	 2023 Oct 025	004:07:13 	POST	 undefined	 /virtual
 91b96fec-4cc8-43fb-96b7-5b56415b6903	 2023 Oct 025	004:35:03 	POST	 undefined	 /virtual
 08e3290c-5932-4898-b156-9b1b91d8d84e	 2023 Oct 025	004:49:20 	POST	 undefined	 /virtual
+b8d0c56a-b422-4473-b186-fe55bc48a63f	 2023 Oct 025	006:24:17 	OPTIONS	 http://localhost:5173	 /login
+1c7bcb3c-bd21-40dd-b650-cd81afc3a91a	 2023 Oct 025	006:27:11 	OPTIONS	 http://localhost:5173	 /login
+cb3b7b7a-73ac-450d-81c4-050423c74e77	 2023 Oct 025	006:28:21 	OPTIONS	 http://localhost:5173	 /login
+7c0da5c7-489a-4ee0-885a-9be3c978708b	 2023 Oct 025	006:28:21 	POST	 http://localhost:5173	 /login
