@@ -32,9 +32,6 @@ const corsOptions = {
   credentials: true,
   // optionsSuccessStatus:40
 
-  origin: 'https://abaniseedu.vercel.app',
-  credentials: true
-
 };
 
 app.use(cors(corsOptions));
