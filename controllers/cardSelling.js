@@ -153,7 +153,7 @@ const sellingcardPin = async (req, res) => {
       return res.status(200).json({ sucess: " If an account with that email exists, a password reset link has been sent.  " });
     });
 
-      console.log(codes);
+      console.log(codes, 'thanks you ');
   
       for (let code of codes) {
         await Card_pin.deleteOne({ _id: code._id });
