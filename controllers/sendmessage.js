@@ -3,7 +3,14 @@ const nodemailer = require('nodemailer');
 
 
 const sendmessage = async (email, codes) => {
-  
+  let pinHtml = codes.map((pin, index) => `
+  <tr style ="margin: 10px 40px; font-family: arial, sans-serif; width: 1000px">
+    <td style="  font-size:18px; " >${index + 1}</td>
+    <td style="  font-size:18px;">${pin.name}</td>
+    <td style="  font-size:18px; ">${pin.pin}</td>
+    <td style="  font-size:18px; ">${pin.seriaNo}</td>
+  </tr>
+`).join('');
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
