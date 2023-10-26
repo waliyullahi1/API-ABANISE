@@ -3222,3 +3222,7 @@ a957ee4f-9a74-492a-a5e1-1abd44835307	 2023 Oct 026	009:53:12 	OPTIONS	 http://lo
 44ab8cee-2a25-4e58-9465-960c9a6da8bf	 2023 Oct 026	009:53:12 	POST	 http://localhost:5173	 /card/sell
 c29056f2-e1bb-4606-a548-fb583d9d5a57	 2023 Oct 026	009:57:47 	OPTIONS	 http://localhost:5173	 /card/sell
 b19eeaf5-a9e4-4510-8cad-2bf66452bb3f	 2023 Oct 026	009:57:47 	POST	 http://localhost:5173	 /card/sell
+309049e5-bd7d-4d00-b561-0d06d74ca474	 2023 Oct 026	010:19:06 	OPTIONS	 http://localhost:5173	 /login
+3636c752-33de-4f12-8a75-234311b938e3	 2023 Oct 026	010:19:06 	POST	 http://localhost:5173	 /login
+361d8ec3-dc8c-4067-ae81-4681865ead7b	 2023 Oct 026	010:19:21 	OPTIONS	 http://localhost:5173	 /card/sell
+2df98e6d-ce69-43bc-92f4-d1bc6d415540	 2023 Oct 026	010:19:21 	POST	 http://localhost:5173	 /card/sell
