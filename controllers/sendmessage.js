@@ -19,10 +19,12 @@ const sendmessage = async (email, codes) => {
     text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\nhttp://localhost:5173/verify/${codes}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`, // plain text body
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) return res.status(500).send('Error sending email.');
-    return res.status(200).json({ sucess: " If an account with that email exists, a password reset link has been sent.  " });
-  });
+  try {
+    let info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ' + info.response);
+} catch (error) {
+    console.log('Error: ', error);
+}
  
 };
   module.exports = sendmessage;
