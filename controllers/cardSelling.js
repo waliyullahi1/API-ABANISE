@@ -82,7 +82,7 @@ const sellingcardPin = async (req, res) => {
       const notexist = await Card_pin.findOne({ name: examType }).exec()
       if(!notexist) return res.status(403).json({ message: 'No cardname available for this exam type.' })
       if(codes.length < numCodes ) return res.status(403).json({ message: 'We dont have up to card you request the ' })
-      res.json(codes);
+      
     if (examType==="WAEC" || examType==="NECO" || examType==="NABTEB") {
       const tran = await handletransaction( arrangedate, foundUser._id, time, amount, foundUserBal, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`)
    
@@ -154,7 +154,7 @@ const sellingcardPin = async (req, res) => {
     });
 
       console.log(codes, 'thanks you ');
-  
+      res.json(codes);
       for (let code of codes) {
         await Card_pin.deleteOne({ _id: code._id });
       }
