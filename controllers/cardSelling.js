@@ -84,10 +84,10 @@ const sellingcardPin = async (req, res) => {
       if(codes.length < numCodes ) return res.status(403).json({ message: 'We dont have up to card you request the ' })
       res.json(codes);
     if (examType==="WAEC" || examType==="NECO" || examType==="NABTEB") {
-      const tran = await handletransaction( arrangedate, foundUser._id, time, amount, foundUserBal, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin as been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`)
+      const tran = await handletransaction( arrangedate, foundUser._id, time, amount, foundUserBal, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`)
    
     } else {
-      const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin as been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`)
+      const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`)
    
     }
     foundUser.walletBalance = foundUserBal 
@@ -153,7 +153,7 @@ const sellingcardPin = async (req, res) => {
       return res.status(200).json({ sucess: " If an account with that email exists, a password reset link has been sent.  " });
     });
 
-   
+      console.log(codes);
   
       for (let code of codes) {
         await Card_pin.deleteOne({ _id: code._id });
