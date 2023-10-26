@@ -86,10 +86,10 @@ const sellingcardPin = async (req, res) => {
     if (examType==="WAEC" || examType==="NECO" || examType==="NABTEB") {
       const tran = await handletransaction( arrangedate, foundUser._id, time, amount, foundUserBal, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`)
       
-      const email = await sendmessage(email, codes)
+      const emails = await sendmessage(email, codes)
     } else {
       const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`)
-      const email = await sendmessage(email, codes)
+      const emails = await sendmessage(email, codes)
     }
     foundUser.walletBalance = foundUserBal 
     const result = await foundUser.save() 
