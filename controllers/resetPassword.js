@@ -34,7 +34,7 @@ const requestPasswordReset = async (req, res) => {
       from: '"no-reply"waliuwaheed2021@gmail.com', 
       to: email, 
       subject: 'Password Reset', 
-      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\nhttp://localhost:5173/verify/${token}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`, // plain text body
+      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\nhttp://https://abaniseedu.vercel.app/verify/${token}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`, // plain text body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
