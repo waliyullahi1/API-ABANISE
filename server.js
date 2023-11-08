@@ -28,7 +28,7 @@ app.use(logger);
 // app.use(cors(corsOptions));
 const corsOptions = {
 
-  origin: ['http://localhost:5173','https://abaniseedu.com'],
+  origin: ['http://localhost:5173','https://www.abaniseedu.com'],
   credentials: true,
   // optionsSuccessStatus:40
 
