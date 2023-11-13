@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectId,
-    ref: 'Abanisedata'
+    type: String,
+    required: true
   },
   transactionDate: {
     type: String,
@@ -26,7 +26,11 @@ const TransactionSchema = new Schema({
     required: true
   },
 
-  wallet: {
+ oldwallet: {
+    type: String,
+    required: true
+  },
+ newwallet:{
     type: String,
     required: true
   },

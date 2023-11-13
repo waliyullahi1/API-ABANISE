@@ -1,5 +1,6 @@
 const Abanisedata = require("../model/Users");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
+
 const generateVirtualAccount = require('./generateVirtualAcc')
 
 

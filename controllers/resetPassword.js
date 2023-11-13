@@ -3,7 +3,8 @@ const nodemailer = require('nodemailer');
 const User = require('../model/Users'); 
 const jwt = require('jsonwebtoken');
 
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
+
 
 
 const requestPasswordReset = async (req, res) => {

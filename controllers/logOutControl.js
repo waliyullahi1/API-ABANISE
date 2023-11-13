@@ -1,5 +1,6 @@
 const User = require("../model/Users");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
+
 
 
 const handleLogout = async (req, res) => {

@@ -71,7 +71,8 @@ const sellingcardPin = async (req, res) => {
     try {
       const time = await refrenceId();
       const dateOftran = await transactiondate();
-      const foundUserBal = foundUser.walletBalance - amount;
+      const newbalance = foundUser.walletBalance - amount;
+      const oldbalance =foundUser.walletBalance
      
     
       const codes = await Card_pin.find({ name: examType }).limit(numCodes);
@@ -84,11 +85,11 @@ const sellingcardPin = async (req, res) => {
       if(codes.length < numCodes ) return res.status(403).json({ message: 'We dont have up to card you request the ' })
       
     if (examType==="WAEC" || examType==="NECO" || examType==="NABTEB") {
-      const tran = await handletransaction( arrangedate, foundUser._id, time, amount, foundUserBal, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`)
+      const tran = await handletransaction( arrangedate, foundUser.email, time, amount, newbalance, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`, oldbalance)
       
       const emails = await sendmessage(email, codes)
     } else {
-      const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`)
+      const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`, oldbalance)
       const emails = await sendmessage(email, codes)
     }
     foundUser.walletBalance = foundUserBal 

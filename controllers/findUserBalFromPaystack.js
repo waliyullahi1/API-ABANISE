@@ -53,10 +53,10 @@ const getCustomerByAccountNumber = async (customeracc) => {
          const tran = await savenewFund(foundUser.email , transaction.customer.id, transaction.amount, transaction.status,transaction.authorization.card_type, transaction.id,  new Date(transaction.createdAt), format(date, 'MMM, ddd, yyyy hh:mm aaa'));
           console.log(lastTransaction);
         if (transaction.id > lastTransactionId) {
-          let amount = transaction.amount / 100; // convert from kobo to naira
+          let amount = (transaction.amount / 100) - 50; // convert from kobo to naira and remove charges 
           total += amount;
           console.log(amount);
-           // Add the amount to the total of new transactions
+         
         }
 
       }

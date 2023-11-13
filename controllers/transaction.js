@@ -13,13 +13,14 @@ async function transactiondate() {
   }
 }
 transactiondate();
-const handletransaction = (arrangeDate, userid, referenceid, amounts, walletBalance, types, recipients, descriptions, statuses, transactionDate, value) =>{
+const handletransaction = (arrangeDate, userid, referenceid, amounts, walletBalance, types, recipients, descriptions, statuses, transactionDate, value, oldwallet) =>{
 const newTransaction = new Transaction({
   arrangeDate:arrangeDate,
   user: userid,
   amount: amounts,
   description: descriptions,
-  wallet:walletBalance,
+  newwallet:walletBalance,
+  oldwallet:oldwallet,
   refid:referenceid,
   recipient:recipients,
   type:types,

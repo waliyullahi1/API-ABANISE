@@ -1,5 +1,6 @@
 const User = require('../model/Users')
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
+
 const getCustomerByAccountNumber = require("./findUserBalFromPaystack");
 const jwt = require("jsonwebtoken");
 
@@ -32,7 +33,7 @@ const handleLogin = async (req, res) => {
     const newfound = await getCustomerByAccountNumber(foundUser.account_number);
     foundUser.walletBalance += newfound;
     console.log(newfound, '0000000');
-    // foundUser.walletBalance = account;
+    foundUser.walletBalance = account;
   foundUser.refreshToken = refreshToken
      
 

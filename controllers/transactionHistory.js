@@ -8,8 +8,8 @@ const transactionHistory = async (req, res)=>{
     if (!cookies?.jwt) return res.sendStatus(401);
     const refreshToken = cookies.jwt;
     const foundUser = await User.findOne({ refreshToken }).exec();
-    const userId = foundUser._id;
-    const transactions = await Transaction.find({ user:userId }).sort({transactionDate: -1}); 
+    const email = foundUser.email;
+    const transactions = await Transaction.find({ user:email }).sort({transactionDate: -1}); 
     res.json(transactions)
 }
 
