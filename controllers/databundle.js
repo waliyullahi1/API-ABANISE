@@ -74,7 +74,8 @@ const airtimeForAllNewtwork = async (req, res) => {
 
   const { networkName, amount, phone, TransactionCode, } = req.body;
   const request_id = `${await refrenceId()}fghu3`;
- 
+  if (!plan || !amount || !networkName|| !phone|| !TransactionCode)return res.status(400).json({ "message": "Username and password are required." });
+
  
        const dateOftran = await transactiondate();
   if (foundUser.transaction !== TransactionCode) return res.status(401).json({ "message": " incorrect transactions pin  " });
@@ -240,6 +241,8 @@ const dataBundleForAllNewtwork = async (req, res) => {
 
 
   const { plan, amount, networkName, phone, TransactionCode, datatype } = req.body;
+  if (!plan || !amount || !networkName|| !phone|| !TransactionCode|| !datatype)return res.status(400).json({ "message": "Username and password are required." });
+
   if (foundUser.transaction !== TransactionCode) return res.status(403).json({ "message": " incorrect transactions pin  " });
   const request_id = `${await refrenceId()}fghu3`;
   const arrangedate = await arrangeDate()
