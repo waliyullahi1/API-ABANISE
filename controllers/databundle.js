@@ -79,7 +79,7 @@ const airtimeForAllNewtwork = async (req, res) => {
  if (foundUser.transaction !== TransactionCode) return res.status(401).json({ "message": " incorrect transactions pin  " });
   if (foundUser.walletBalance < amount) return res.status(403).json({ "message": " insufficient balance  " });
   if (String(phone).length < 11 ||  String(phone).length > 11) return res.status(403).json({ "message": " Incorrect phone Number " });
-  if (networkName != 'MTN' || networkName != 'AIRTEL' || networkName != 'GLO' || networkName != '9MOBILE') return res.status(400).json({ "message": " networkname is  " });
+  if (networkName != 'MTN' && networkName != 'AIRTEL' && networkName != 'GLO' && networkName != '9MOBILE') return res.status(400).json({ "message": " networkname is  " });
        const dateOftran = await transactiondate();
  
 
