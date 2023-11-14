@@ -30,7 +30,7 @@ const corsOptions = {
 
   origin: ['http://localhost:5173','https://www.abaniseedu.com'],
   credentials: true,
-  // optionsSuccessStatus:40
+  optionsSuccessStatus:40
 
 };
 
