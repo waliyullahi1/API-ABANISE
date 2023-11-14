@@ -105,7 +105,7 @@ const airtimeForAllNewtwork = async (req, res) => {
     "amount": amount,
     "phone_number": phone,
     "reference": request_id,
-    "disable_validation": true,
+    "disable_validation": false,
     "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/airtime"
   };
 
