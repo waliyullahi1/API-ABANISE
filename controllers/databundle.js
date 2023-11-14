@@ -5,13 +5,6 @@ const handletransaction = require('./transaction')
 const { format, parseISO } = require('date-fns')
 
 
-const url = "https://sandbox.vtpass.com/api/pay"
-const headers = {
-  "Content-Type": "application/json",
-  "api-key": "a010d9cbacb589344f35db21e847ff1d",
-  "secret-key": "SK_80164128cd3835d08dc2173e9f7004204145c2ce010"
-};
-const hours = "14"
 
 
 
