@@ -10,7 +10,7 @@ const logEvent = async (message, logName) => {
   const date = await format(new Date(), "yyyy MMM ddd\tHHH:mm:ss ");
   const ui = `${uuid()}`;
   const Allthe = `${ui}\t ${date}\t${message}\n`;
-  fspromise.appendFile(path.join('/tmp', logName), Allthe);
+  fspromise.appendFile(path.join(__dirname, logName), Allthe);
 };
 //'/tmp'
 const logger = (req, res, next) => {
