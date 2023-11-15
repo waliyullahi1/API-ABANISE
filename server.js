@@ -89,6 +89,11 @@ console.log(addresses);
 
 // app.use(verifyJWT);
 app.use("/employees", require("./route/api/employees"));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // app.all("*", (req, res) => {
 //   res.status(404)
