@@ -93,138 +93,61 @@ const airtimeForAllNewtwork = async (req, res) => {
 
   }
   console.log(networkId,networkName );
-  res.json({message:networkId})
-  // let data = {
-  //   "network": networkId,
-  //   "amount": amount,
-  //   "phone_number": phone,
-  //   "reference": request_id,
-  //   "disable_validation": false,
-  //   "webhook_url": "https://www.abaniseedu.com"
-  // };
+  // res.json({message:networkId})
+  let data = {
+    "network": networkId,
+    "amount": amount,
+    "phone_number": phone,
+    "reference": request_id,
+    "disable_validation": false,
+    "webhook_url": "https://www.abaniseedu.com"
+  };
 
 
-  // let config = {
-  //   method: 'post',
-  //   url: 'https://isquaredata.com/api/airtime/buy/',
-  //   headers: {
-  //     'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
-  //   },
-  //   data: data
-  // };
+  let config = {
+    method: 'post',
+    url: 'https://isquaredata.com/api/airtime/buy/',
+    headers: {
+      'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
+    },
+    data: data
+  };
 
 
-  // try {
-  //   const response = await axios(config);
+  try {
+    const response = await axios(config);
 
-  //   const time = await refrenceId();
-  //   const status = response.data.status;
-  //   const arrangedate = await arrangeDate()
-  // const dateOftran = await transactiondate();
+    const time = await refrenceId();
+    const status = response.data.status;
+    const arrangedate = await arrangeDate()
+  const dateOftran = await transactiondate();
 
-  //   // if (!('status' in response.data)) {
-  //   //   return res.status(401).json({ "message": " Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you" })
-  //   // }
+    // if (!('status' in response.data)) {
+    //   return res.status(401).json({ "message": " Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you" })
+    // }
     
-  //   console.log(foundUser.walletBalance);
-  //   if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
-  //     const newbalance = foundUser.walletBalance - amount;
-  //     const oldbalance =foundUser.walletBalance
-  //     const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Airtime`, oldbalance)
-  //     const result = await foundUser.save()
-  //     console.log(result, tran, newbalance, oldbalance);
-  //     console.log(response);
-  //     res.json({message:response.data.status})
-  //   } else { 
-  //     const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Airtime`, phone, `Dear Customer, You are try to Buy ${amount} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Airtime`)
-  //   }
-  //   console.log();
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(500).send('Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you');
-  // }
+    console.log(status, 'status');
+    if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
+      const newbalance = foundUser.walletBalance - amount;
+      const oldbalance =foundUser.walletBalance
+      const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Airtime`, oldbalance)
+      const result = await foundUser.save()
+      console.log(result, tran, newbalance, oldbalance);
+     
+      res.json({'success':status})
+    } else { 
+      const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Airtime`, phone, `Dear Customer, You are try to Buy ${amount} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Airtime`)
+    }
+    console.log();
+  } catch (error) {
+    console.log(error);
+    res.json({'message': 'Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you'})
+     }
 
 }
 
 
-// const airtimeForAllNewtwork = async (req, res) =>{
 
-//      const cookies = req.cookies;
-// if (!cookies?.jwt) return res.sendStatus(401);
-// const refreshToken = cookies.jwt;
-
-// const foundUser = await User.findOne({ refreshToken }).exec();
-
-// if (!foundUser) return res.sendStatus(403);
-
-//     const { serviceID, amount, phone, TransactionCode,  } = req.body;
-//         const request_id = `${await refrenceId()}fghu3`;
-
-//         if(foundUser.transaction !== TransactionCode) return res.status(401).json({ "message": " incorrect transactions pin  " });
-//     if(foundUser.walletBalance < amount) return res.status(403).json({ "message": " insufficient balance  " });
-//     var axios = require('axios');
-// var data = {   "network": 1,
-//    "amount": 50.0,
-//        "phone_number": "08163588242",
-//            "reference": "SDFGFD",   
-//             "disable_validation": false,
-//                 "webhook_url": "https://webhook.site/cf196551-0879-4c7e-adf3-514765618730"
-//         };
-
-// var config = {
-//   method: 'post',
-// maxBodyLength: Infinity,
-//   url: 'https://isquaredata.com/api/airtime/buy/',
-//   headers: {
-//     Username:'08166988715',
-//     Password:'Waliu1234'
-//    },
-//   data : data
-// };
-
-// axios(config)
-// .then(function (response) {
-//   console.log(JSON.stringify(response.data));
-// })
-// .catch(function (error) {
-//   console.log(error);
-// });
-
-//     const data = {
-//        'request_id':request_id,
-//         'serviceID': serviceID,
-//         'billersCode': phone, 
-//         'amount': amount, 
-//         'phone': phone,
-
-//     }
-
-//     try {
-//         const response = await axios.post(url, data, {headers:headers});
-//         res.json(response.data)
-//         const time = await refrenceId();
-//         const dateOftran = await transactiondate();
-//         const status = response.data.response_description ;
-//         const arrangedate = await arrangeDate()
-
-
-
-//          if (status === "TRANSACTION SUCCESSFUL" || status === "TRANSACTION IS PROCESSING ") {
-//           const foundUserBal = foundUser.walletBalance - amount;
-//               const tran = await handletransaction(arrangedate, foundUser._id, time, amount, foundUserBal, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${ serviceID.toUpperCase()}  For this phone number ${phone} `, 'successfull', dateOftran, `${ serviceID.toUpperCase()} Airtime`)
-//           const result = await foundUser.save() 
-//          } else {
-//           const tran = await handletransaction(arrangedate, foundUser._id, time,`00.00`, foundUser.walletBalance, `Airtime`, phone, `Dear Customer, You are try to Buy ${amount} Airtime ${ serviceID.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${serviceID.toUpperCase()} Airtime`)
-//         }
-
-
-//     } catch (error) {
-//         console.error(error)
-//         res.status(500).send('An error occurred while processing your request.')
-//     }    
-
-//    console.log('result');
-// }
 
 const dataBundleForAllNewtwork = async (req, res) => {
   const cookies = req.cookies;

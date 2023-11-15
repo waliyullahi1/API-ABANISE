@@ -22,15 +22,15 @@ app.use(logger);
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
- //app.use(credentials);
+//  app.use(credentials);
 
-// Cross Origin Resource sharing
+//Cross Origin Resource sharing
 // app.use(cors(corsOptions));
 const corsOptions = {
 
   origin: ['http://localhost:5173','https://www.abaniseedu.com'],
   credentials: true,
-  optionsSuccessStatus:40
+  // optionsSuccessStatus:40
 
 };
 

@@ -53,3 +53,7 @@ fd52d83e-2244-4ce3-a1b7-6a3f631d8a43	 2023 Oct 001	004:26:13 	ReferenceError: s 
 2c52f450-9896-4fe1-b5a0-920ffb4ea17d	 2023 Oct 001	004:26:14 	ReferenceError: s is not defined  
 5b078f86-8e73-490a-8420-170d08b46a16	 2023 Oct 001	004:26:14 	ReferenceError: s is not defined  
 4b3f4c04-2ed6-47c1-a260-58cc240c1d30	 2023 Nov 014	005:05:41 	SyntaxError: Expected double-quoted property name in JSON at position 140  
+e68e36dc-e07b-480e-9366-6520a1953b1f	 2023 Nov 015	008:50:12 	RangeError: Invalid status code: 40  
+1b5660b1-df1c-47c9-a285-6659745e8536	 2023 Nov 015	009:16:57 	TypeError: allowedOrigins.includes is not a function  
+00e57966-2078-44aa-b149-033a56d494cf	 2023 Nov 015	009:24:55 	TypeError: allowedOrigins.includes is not a function  
+7a199540-bd3c-405d-ba26-4a264e5a47fb	 2023 Nov 015	009:24:58 	TypeError: allowedOrigins.includes is not a function  
