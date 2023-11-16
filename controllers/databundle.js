@@ -184,7 +184,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
       originalAmount = 690;
       break;
     case 1://500MB
-      originalAmount = 150;
+      originalAmount = 130;
       break;
     case 5://5GB
       originalAmount = 1250;
@@ -321,139 +321,139 @@ const dataBundleForAllNewtwork = async (req, res) => {
   try {
     let originalAmount = '';
 
-    switch (plan) {
-      //Mtn sme data (10gb-168, 1gb-2, 2gb-3, 3gb-4, 500mb-1,5gb-5  )
+    // switch (plan) {
+    //   //Mtn sme data (10gb-168, 1gb-2, 2gb-3, 3gb-4, 500mb-1,5gb-5  )
 
-      case 168://10GB
-        originalAmount = 2300;
-        break;
-      case 2://1GB
-        originalAmount = 230;
-        break;
-      case 3://2GB
-        originalAmount = 460;
-        break;
-      case 4://3GB
-        originalAmount = 690;
-        break;
-      case 1://500MB
-        originalAmount = 150;
-        break;
-      case 5://5GB
-        originalAmount = 1150;
-        break;
-      //Mtn corporate data (10gb-18, 1gb-14, 2gb-15, 3gb-16, 500mb-13,5gb-17  )
-      case 18://10GB
-        originalAmount = 2500;
-        break;
-      case 14://1GB
-        originalAmount = 250;
-        break;
+    //   case 168://10GB
+    //     originalAmount = 2300;
+    //     break;
+    //   case 2://1GB
+    //     originalAmount = 230;
+    //     break;
+    //   case 3://2GB
+    //     originalAmount = 460;
+    //     break;
+    //   case 4://3GB
+    //     originalAmount = 690;
+    //     break;
+    //   case 1://500MB
+    //     originalAmount = 150;
+    //     break;
+    //   case 5://5GB
+    //     originalAmount = 1150;
+    //     break;
+    //   //Mtn corporate data (10gb-18, 1gb-14, 2gb-15, 3gb-16, 500mb-13,5gb-17  )
+    //   case 18://10GB
+    //     originalAmount = 2500;
+    //     break;
+    //   case 14://1GB
+    //     originalAmount = 250;
+    //     break;
 
-      case 15://2GB
-        originalAmount = 500;
-        break;
+    //   case 15://2GB
+    //     originalAmount = 500;
+    //     break;
 
-      case 16://3GB
-        originalAmount = 750;
-        break;
+    //   case 16://3GB
+    //     originalAmount = 750;
+    //     break;
 
-      case 13://500MB
-        originalAmount = 125;
-        break;
+    //   case 13://500MB
+    //     originalAmount = 125;
+    //     break;
 
-      case 17://5GB
-        originalAmount = 1250;
-        break;
+    //   case 17://5GB
+    //     originalAmount = 1250;
+    //     break;
 
-      //Airtel corporate data (100MB-157, 1gb-160, 2gb-161, 3gb-16, 500mb-159,5gb-162  )
-      case 157://100MB 7DAYS
-        originalAmount = 50;
-        break;
-      case 160://1GB MONTHLY
-        originalAmount = 250;
-        break;
+    //   //Airtel corporate data (100MB-157, 1gb-160, 2gb-161, 3gb-16, 500mb-159,5gb-162  )
+    //   case 157://100MB 7DAYS
+    //     originalAmount = 50;
+    //     break;
+    //   case 160://1GB MONTHLY
+    //     originalAmount = 250;
+    //     break;
 
-      case 161://2GB MONTHLY
-        originalAmount = 500;
-        break;
+    //   case 161://2GB MONTHLY
+    //     originalAmount = 500;
+    //     break;
 
-      case 159://500MB MONTHLY
-        originalAmount = 150;
-        break;
+    //   case 159://500MB MONTHLY
+    //     originalAmount = 150;
+    //     break;
 
-      case 162://5GB MONTHLY
-        originalAmount = 1250;
-        break;
+    //   case 162://5GB MONTHLY
+    //     originalAmount = 1250;
+    //     break;
 
-      //Glo corporate data (500MB-173, 1gb-	174, 2gb-175, 3gb-176, 500mb-159,5gb-177  )
-      case 173://500MB MONTHLY
-        originalAmount = 155;
-        break;
-      case 174://1GB MONTHLY
-        originalAmount = 250;
-        break;
+    //   //Glo corporate data (500MB-173, 1gb-	174, 2gb-175, 3gb-176, 500mb-159,5gb-177  )
+    //   case 173://500MB MONTHLY
+    //     originalAmount = 155;
+    //     break;
+    //   case 174://1GB MONTHLY
+    //     originalAmount = 250;
+    //     break;
 
-      case 175://2GB MONTHLY	
-        originalAmount = 500;
-        break;
-
-
-
-      case 176://3GB MONTHLY
-        originalAmount = 750;
-        break;
-
-      case 177://5GB MONTHLY
-        originalAmount = 1250;
-        break;
-
-      //9MOBILE SME DATA (1.5gb-106, 1gb-	105, 2gb-107, 3gb-108, 500mb-104,5gb-17  )
-      case 106: //1.5gb
-        originalAmount = 525;
-        break;
-      case 105://1gb
-        originalAmount = 350;
-        break;
-
-      case 107://2GB SME
-        originalAmount = 700;
-        break;
+    //   case 175://2GB MONTHLY	
+    //     originalAmount = 500;
+    //     break;
 
 
 
-      case 108://3GB SME
-        originalAmount = 1050;
-        break;
+    //   case 176://3GB MONTHLY
+    //     originalAmount = 750;
+    //     break;
 
-      case 104://500MB SME 14days
-        originalAmount = 220;
-        break;
+    //   case 177://5GB MONTHLY
+    //     originalAmount = 1250;
+    //     break;
 
-      case 109://5GB
-        originalAmount = 1550;
-        break;
+    //   //9MOBILE SME DATA (1.5gb-106, 1gb-	105, 2gb-107, 3gb-108, 500mb-104,5gb-17  )
+    //   case 106: //1.5gb
+    //     originalAmount = 525;
+    //     break;
+    //   case 105://1gb
+    //     originalAmount = 350;
+    //     break;
 
-      //9MOBILE CORPORATE DATA (10gb-188, 1gb-180, 2gb-181, 3gb-182, 500mb-179,5gb-184  )
+    //   case 107://2GB SME
+    //     originalAmount = 700;
+    //     break;
 
-      case 188://10GB MONTHLY
-        originalAmount = 2300;
-        break;
-      case 180://1GB
-        originalAmount = 160;
-        break;
-      case 181://2GB
-        originalAmount = 320;
-        break;
-      case 182://3GB
-        originalAmount = 480;
-        break;
-      case 179://500MB
-        originalAmount = 100;
-        break;
-      case 184://5GB
-        originalAmount = 800;
-    }
+
+
+    //   case 108://3GB SME
+    //     originalAmount = 1050;
+    //     break;
+
+    //   case 104://500MB SME 14days
+    //     originalAmount = 220;
+    //     break;
+
+    //   case 109://5GB
+    //     originalAmount = 1550;
+    //     break;
+
+    //   //9MOBILE CORPORATE DATA (10gb-188, 1gb-180, 2gb-181, 3gb-182, 500mb-179,5gb-184  )
+
+    //   case 188://10GB MONTHLY
+    //     originalAmount = 2300;
+    //     break;
+    //   case 180://1GB
+    //     originalAmount = 160;
+    //     break;
+    //   case 181://2GB
+    //     originalAmount = 320;
+    //     break;
+    //   case 182://3GB
+    //     originalAmount = 480;
+    //     break;
+    //   case 179://500MB
+    //     originalAmount = 100;
+    //     break;
+    //   case 184://5GB
+    //     originalAmount = 800;
+    // }
     const response = await axios(config);
 
     const time = await refrenceId();
@@ -467,7 +467,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
     // }
     
     if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
-      const newbalance = foundUser.walletBalance - amount;
+      const newbalance = foundUser.walletBalance - originalAmount;
       const oldbalance =foundUser.walletBalance
      
       const tran = await handletransaction(arrangedate, foundUser.email, time, originalAmount, newbalance, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
