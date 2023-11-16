@@ -1,6 +1,6 @@
 const allowedOrigins = [
     'https://www.yoursite.com',
-    'http://127.0.0.1:5500',
+    'https://www.abaniseedu.com',
     'http://localhost:5173',
     'http://localhost:5173'
 ];
