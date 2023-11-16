@@ -130,6 +130,7 @@ const airtimeForAllNewtwork = async (req, res) => {
     if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
       const newbalance = foundUser.walletBalance - amount;
       const oldbalance =foundUser.walletBalance
+      foundUser.walletBalance -= amount
       const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Airtime`, oldbalance)
       const result = await foundUser.save()
       console.log(result, tran, newbalance, oldbalance);
@@ -469,9 +470,10 @@ const dataBundleForAllNewtwork = async (req, res) => {
     if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
       const newbalance = foundUser.walletBalance - originalAmount;
       const oldbalance =foundUser.walletBalance
-     
+     foundUser.walletBalance -= originalAmount
       const tran = await handletransaction(arrangedate, foundUser.email, time, originalAmount, newbalance, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
-       const result = await foundUser.save()
+      
+      const result = await foundUser.save()
        res.json({'success':status})
     } else {
       const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Data Bundle `, phone, `Dear Customer, You are try to Buy ${datatype} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
