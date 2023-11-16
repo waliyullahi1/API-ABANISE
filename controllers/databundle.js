@@ -100,13 +100,13 @@ const airtimeForAllNewtwork = async (req, res) => {
     "phone_number": phone,
     "reference": request_id,
     "disable_validation": false,
-    "webhook_url": "https://api-abanise-5a3s.vercel.app"
+    "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/"
   };
 
 
   let config = {
     method: 'post',
-    url: 'https://isquaredata.com/api/airtime/buy/',
+    url: 'https://isquaredata.com/api/airtime/buy/data',
     headers: {
       'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
     },
@@ -472,9 +472,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
      
       const tran = await handletransaction(arrangedate, foundUser.email, time, originalAmount, newbalance, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
        const result = await foundUser.save()
-      
-       console.log(response);
-       res.json({message:response.data.status})
+       res.json({'success':status})
     } else {
       const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Data Bundle `, phone, `Dear Customer, You are try to Buy ${datatype} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
     }
