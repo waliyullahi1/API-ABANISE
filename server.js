@@ -14,6 +14,7 @@ const connectDB = require("./config/db");
 const credentials = require("./middleware/credentials");
 
 const allowCors = fn => async (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Credentials', "https://www.abaniseedu.com")
   res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
