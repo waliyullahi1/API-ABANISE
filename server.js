@@ -13,21 +13,21 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 const credentials = require("./middleware/credentials");
 
-const allowCors = fn => async (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://www.abaniseedu.com");
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-  if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
-  }
-  return await fn(req, res, next)
-}
+// const allowCors = fn => async (req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "https://www.abaniseedu.com");
+//   res.setHeader('Access-Control-Allow-Credentials', true)
+//   res.setHeader('Access-Control-Allow-Origin', '*')
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+//   res.setHeader(
+//     'Access-Control-Allow-Headers',
+//     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+//   )
+//   if (req.method === 'OPTIONS') {
+//     res.status(200).end()
+//     return
+//   }
+//   return await fn(req, res, next)
+// }
 
 //connect to mongoose
 connectDB();
@@ -40,15 +40,15 @@ app.use(logger);
 
 //Cross Origin Resource sharing
 // app.use(cors(corsOptions));
-const corsOptions = {
+// const corsOptions = {
 
-  origin: ['http://localhost:5173','https://www.abaniseedu.com'],
-  credentials: true,
-  // optionsSuccessStatus:40
+//   origin: ['http://localhost:5173','https://www.abaniseedu.com'],
+//   credentials: true,
+//   // optionsSuccessStatus:40
 
-};
+// };
 
-app.use(cors(corsOptions));
+app.use(cors({origin :"*"}));
 
 //Build-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
