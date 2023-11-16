@@ -103,9 +103,17 @@ console.log(addresses);
 // app.use(verifyJWT);
 app.use("/employees", require("./route/api/employees"));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://www.abaniseedu.com"); // Specify the exact origin
+  res.header("Access-Control-Allow-Origin", "https://www.abaniseedu.com"); 
+  res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+  // Specify the exact origin
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header('Access-Control-Allow-Credentials', true); // Include this to allow cookies
+   
   next();
 });
 // app.all("*", (req, res) => {
