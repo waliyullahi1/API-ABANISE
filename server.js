@@ -24,7 +24,7 @@ app.use(logger);
 //  app.use(credentials);
 
 //Cross Origin Resource sharing
-app.use(cors(corsOptions));
+
 const corsOptions = {
 
   origin: ['http://localhost:5173','https://www.abaniseedu.com', 'www.abaniseedu.com'],
@@ -32,7 +32,7 @@ const corsOptions = {
   // optionsSuccessStatus:40
 
 };
-
+app.use(cors(corsOptions));
 
 
 //Build-in middleware to handle urlencoded form data
