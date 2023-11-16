@@ -106,7 +106,7 @@ const airtimeForAllNewtwork = async (req, res) => {
 
   let config = {
     method: 'post',
-    url: 'https://isquaredata.com/api/airtime/buy/data',
+    url: 'https://isquaredata.com/api/airtime/buy/',
     headers: {
       'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
     },

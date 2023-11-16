@@ -3382,3 +3382,7 @@ fc8c8649-ed29-464d-ac5c-fa3655ae2256	 2023 Nov 016	005:48:27 	OPTIONS	 http://lo
 e6400b7d-9b47-4f2a-8ffc-bc673ec4588d	 2023 Nov 016	005:48:56 	GET	 http://localhost:5173	 /refreshtoken
 18c867bc-c337-4a16-a5aa-6bcf70b5f3ce	 2023 Nov 016	005:48:56 	OPTIONS	 http://localhost:5173	 /dashboard
 01558368-9c64-4f35-9ac4-94ac18443805	 2023 Nov 016	005:48:56 	GET	 http://localhost:5173	 /dashboard
+30df483f-8f3f-4d9c-b2d5-3b9e52f17410	 2023 Nov 016	008:27:24 	OPTIONS	 http://localhost:5173	 /login
+d3e53c67-50d1-4bd2-8c73-4c52c021b245	 2023 Nov 016	008:27:24 	POST	 http://localhost:5173	 /login
+1892d272-32f0-4ed0-93b3-942682e0c576	 2023 Nov 016	008:28:09 	OPTIONS	 http://localhost:5173	 /sub/airtime
+f225fe25-1fa1-4d40-a530-45f87663e213	 2023 Nov 016	008:28:09 	POST	 http://localhost:5173	 /sub/airtime
