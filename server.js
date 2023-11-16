@@ -94,7 +94,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
 // app.all("*", (req, res) => {
 //   res.status(404)
 //   if (req.accepts('html')) {

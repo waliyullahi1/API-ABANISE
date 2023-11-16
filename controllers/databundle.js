@@ -100,7 +100,7 @@ const airtimeForAllNewtwork = async (req, res) => {
     "phone_number": phone,
     "reference": request_id,
     "disable_validation": false,
-    "webhook_url": "https://www.abaniseedu.com"
+    "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/airtime"
   };
 
 
@@ -301,7 +301,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
     "phone_number": phone,
     "reference": request_id,
     "disable_validation": false,
-    "webhook_url": "https://webhook.site/0879-4c7e-adf3-514765618730"
+    "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/airtime"
 }
   
  
