@@ -326,45 +326,45 @@ const dataBundleForAllNewtwork = async (req, res) => {
       //Mtn sme data (10gb-168, 1gb-2, 2gb-3, 3gb-4, 500mb-1,5gb-5  )
 
       case 168://10GB
-        originalAmount = 2300;
+        originalAmount = 2850;
         break;
       case 2://1GB
-        originalAmount = 230;
+        originalAmount = 285;
         break;
       case 3://2GB
-        originalAmount = 460;
+        originalAmount = 570;
         break;
       case 4://3GB
-        originalAmount = 690;
+        originalAmount = 855;
         break;
       case 1://500MB
         originalAmount = 150;
         break;
       case 5://5GB
-        originalAmount = 1150;
+        originalAmount = 1425;
         break;
       //Mtn corporate data (10gb-18, 1gb-14, 2gb-15, 3gb-16, 500mb-13,5gb-17  )
       case 18://10GB
         originalAmount = 2500;
         break;
       case 14://1GB
-        originalAmount = 250;
+        originalAmount = 255;
         break;
 
       case 15://2GB
-        originalAmount = 500;
+        originalAmount = 510;
         break;
 
       case 16://3GB
-        originalAmount = 750;
+        originalAmount = 765;
         break;
 
       case 13://500MB
-        originalAmount = 125;
+        originalAmount = 135;
         break;
 
       case 17://5GB
-        originalAmount = 1250;
+        originalAmount = 1275;
         break;
 
       //Airtel corporate data (100MB-157, 1gb-160, 2gb-161, 3gb-16, 500mb-159,5gb-162  )
@@ -455,6 +455,8 @@ const dataBundleForAllNewtwork = async (req, res) => {
       case 184://5GB
         originalAmount = 800;
     }
+    if (foundUser.walletBalance < originalAmount) return res.status(403).json({ "message": " please found your wallet " });
+
     const response = await axios(config);
 
     const time = await refrenceId();
