@@ -471,17 +471,17 @@ const dataBundleForAllNewtwork = async (req, res) => {
       const newbalance = foundUser.walletBalance - originalAmount;
       const oldbalance =foundUser.walletBalance
      foundUser.walletBalance -= originalAmount
-      const tran = await handletransaction(arrangedate, foundUser.email, time, originalAmount, newbalance, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
+      const tran = await handletransaction(arrangedate, foundUser.email, time, originalAmount, newbalance, `Data Bundle`, phone, `Dear Customer, You have successfully Buy ${datatype}s ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
       
       const result = await foundUser.save()
        res.json({'success':status})
     } else {
-      const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Data Bundle `, phone, `Dear Customer, You are try to Buy ${datatype} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
+      const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Data Bundle `, phone, `Dear Customer, You are try to Buy ${datatype}  ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Data Bundle`, oldbalance)
     }
     console.log();
   } catch (error) {
     console.log(error);
-    res.status(500).send('Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you');
+    res.json({'message': 'Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you'})
   }
 }
 
