@@ -11,7 +11,7 @@ const dashboard = async (req, res) => {
   const foundUser = await User.findOne({ refreshToken }).exec();
 
   if (!foundUser) return res.sendStatus(403); //Forbidden
-  const transactions = await Transaction.find({ user: foundUser._id }).sort({ transactionDate: -1 });
+  const transactions = await Transaction.find({ user: foundUser.email }).sort({ transactionDate: -1 });
   const funds = await fund.find({ email: foundUser.email }).sort({ transactionDate: 1 });
 
   // Calculate total amount
