@@ -345,18 +345,18 @@ const dataBundleForAllNewtwork = async (req, res) => {
         break;
       //Mtn corporate data (10gb-18, 1gb-14, 2gb-15, 3gb-16, 500mb-13,5gb-17  )
       case 18://10GB
-        originalAmount = 2500;
+        originalAmount = 2900;
         break;
       case 14://1GB
-        originalAmount = 255;
+        originalAmount = 290;
         break;
 
       case 15://2GB
-        originalAmount = 510;
+        originalAmount = 580;
         break;
 
       case 16://3GB
-        originalAmount = 765;
+        originalAmount = 870;
         break;
 
       case 13://500MB
@@ -364,7 +364,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
         break;
 
       case 17://5GB
-        originalAmount = 1275;
+        originalAmount = 1450;
         break;
 
       //Airtel corporate data (100MB-157, 1gb-160, 2gb-161, 3gb-16, 500mb-159,5gb-162  )
@@ -372,7 +372,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
         originalAmount = 50;
         break;
       case 160://1GB MONTHLY
-        originalAmount = 250;
+        originalAmount = 235;
         break;
 
       case 161://2GB MONTHLY
