@@ -298,7 +298,7 @@ const dataBundleForAllNewtwork = async (req, res) => {
   console.log(originalAmount);
 
   let data = {
-    "plan": 1,
+    "plan": plan,
     "phone_number": phone,
     "reference": request_id,
     "disable_validation": false,
