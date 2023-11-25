@@ -11,6 +11,7 @@ const savePin = async (req, res)=>{
         name:name, 
         pin: pin,
         seriaNo:seria,
+        amount:amount,
       }); 
 
       res.json({"success ": `new ${result.name} was created `})

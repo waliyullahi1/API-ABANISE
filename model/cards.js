@@ -11,6 +11,11 @@ const cardScheme = new Scheme({
     require: true,
   },
 
+  amount:{
+    type: Number,
+    require: true,
+  },
+
   seriaNo: String 
  
 });
