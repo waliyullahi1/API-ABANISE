@@ -27,7 +27,7 @@ app.use(logger);
 
 const corsOptions = {
 
-  origin: ['http://localhost:5173','https://www.abaniseedu.com'],
+  origin: ['http://localhost:5173','https://www.abaniseedu.com', 'http://localhost:3000'],
   credentials: true,
   // optionsSuccessStatus:40
 
