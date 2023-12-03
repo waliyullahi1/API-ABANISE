@@ -2,6 +2,6 @@ const express = require("express");
 const router = express.Router();
 const scratchCard = require("../controllers/scratchCard");
 
-router.get("/", scratchCard);
+router.post("/", scratchCard);
 
 module.exports = router;

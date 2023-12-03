@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const punycode = require('punycode/')
 const PORT = process.env.PORT || 3500;
 const path = require("path");
 const { logger } = require("./middleware/logEvent");
@@ -64,7 +65,7 @@ app.use("/veryfyJWT", require("./middleware/verifyJWT"));
 app.use("/valid", require("./controllers/verify"));
 app.use("/dashboard", require("./controllers/dashboard"));
 app.use("/virtual", require("./route/api/virtual"));
-
+app.use("/scratch", require("./route/scratch"));
 app.use("/fund", require("./route/api/fund"));
 
 

@@ -1,7 +1,7 @@
 const Card_pin = require('../model/cards')
 const savePin = async (req, res)=>{
-    const {name, pin, seria} = req.body
-    if (!name || !pin || !seria )
+    const {name, pin, seria, amount} = req.body
+    if (!name || !pin || !seria || !amount)
     return res
       .status(400)
       .json({ message: "name and pin are require" });

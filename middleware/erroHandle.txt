@@ -57,3 +57,5 @@ e68e36dc-e07b-480e-9366-6520a1953b1f	 2023 Nov 015	008:50:12 	RangeError: Invali
 1b5660b1-df1c-47c9-a285-6659745e8536	 2023 Nov 015	009:16:57 	TypeError: allowedOrigins.includes is not a function  
 00e57966-2078-44aa-b149-033a56d494cf	 2023 Nov 015	009:24:55 	TypeError: allowedOrigins.includes is not a function  
 7a199540-bd3c-405d-ba26-4a264e5a47fb	 2023 Nov 015	009:24:58 	TypeError: allowedOrigins.includes is not a function  
+374d43a3-b26e-495e-a565-37fac3d21a5f	 2023 Nov 026	008:00:03 	SyntaxError: Unexpected token ''', ..."  "name": 'WAEC',
+ "... is not valid JSON  

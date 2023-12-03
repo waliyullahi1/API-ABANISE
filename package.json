@@ -21,6 +21,7 @@
     "mongoose": "^7.5.2",
     "nodemailer": "^6.9.5",
     "paystack": "^2.0.1",
+    "punycode": "^2.3.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

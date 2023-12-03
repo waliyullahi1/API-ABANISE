@@ -84,18 +84,19 @@ const sellingcardPin = async (req, res) => {
       if(!notexist) return res.status(403).json({ message: 'No cardname available for this exam type.' })
       if(codes.length < numCodes ) return res.status(403).json({ message: 'We dont have up to card you request the ' })
       let totalAmount = codes.reduce((total, item) => total + item.amount, 0)
+    console.log(totalAmount);
+    if(foundUser.walletBalance < totalAmount) return res.status(403).json({ "message": " please found your wallet " });
       foundUser.walletBalance -= totalAmount
-      if(totalAmount > amount ) return res.status(403).json({ message: 'An error occurs  ' })
-
+     
     if (examType==="WAEC" || examType==="NECO" || examType==="NABTEB") {
       const tran = await handletransaction( arrangedate, foundUser.email, time, totalAmount, newbalance, `Scratch card`, foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful",dateOftran, `${examType} result checker`, oldbalance)
       
       const emails = await sendmessage(email, codes)
     } else {
-      const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`, oldbalance)
+      const tran = await handletransaction(arrangedate, foundUser.email, time, totalAmount, newbalance, "Exam Pin", foundUser.phone, `Dear Customer, You have successfully Buy ${numCodes} ${examType} . And the pin has been sent to this email ${email} `, "successful", dateOftran, `${examType} Exam pin`, oldbalance)
       const emails = await sendmessage(email, codes)
     }
-    foundUser.walletBalance = foundUserBal 
+  
     const result = await foundUser.save() 
 
  

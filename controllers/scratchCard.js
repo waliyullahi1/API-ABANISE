@@ -56,13 +56,7 @@ arrangeDate();
 const scratchCard = async (req, res) => {
     const { examType, numCodes, amount, email, refreshToken } = req.body; 
     if (!examType || !numCodes || !email || !amount  || !refreshToken )return res.status(400).json({ message: " and examtype are number you want " });
-    const cookies = req.cookies;
-    
-    const formattedDate = await transactiondate();
-    const arrangedate = await arrangeDate()
-    const foundUser = await User.findOne({ refreshToken }).exec();
-    
-    if (!foundUser) return res.sendStatus(403);
+
     if(refreshToken !== process.env.REFRESH_TOKEN_SECRETY) return res.status(403).json({ "message": " incorrect transactions pin  " });
         try {
       const time = await refrenceId();
