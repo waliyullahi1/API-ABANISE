@@ -1,12 +1,12 @@
 const savequizs = require('../model/quiz'); 
 
-const savequiz = (phone, refreshtoken) =>{
-    const newTransaction = new savequizs({
+const savequiz = async (phone) =>{
+    const newTransaction =  await savequizs.create({
    
       phone:phone,
      
     });
-}
-  savequiz.save()
 
+ 
+}
     module.exports = savequiz

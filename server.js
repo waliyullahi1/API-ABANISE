@@ -67,7 +67,7 @@ app.use("/dashboard", require("./controllers/dashboard"));
 app.use("/virtual", require("./route/api/virtual"));
 app.use("/scratch", require("./route/scratch"));
 app.use("/fund", require("./route/api/fund"));
-
+app.use("/quiz", require("./route/qiuz"));
 
 const os = require("os");
 const networkInterfaces = os.networkInterfaces();

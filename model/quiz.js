@@ -6,12 +6,6 @@ const quizScheme = new Scheme({
     type: String,
     require: true,
   },
-  refreshtoken: {
-    type: String,
-    require: true,
-  },
-
-
  
 });
 
