@@ -49,88 +49,72 @@ const registerNumberForQUiz = async (req, res) => {
 
 
 const givePhoneGift = async (req, res) => {
-  const { phoneNo, networkType } = req.body;
-  if (!phoneNo || !networkType)return res.status(400).json({ "message": "Username and password are required." });
-  const phoneFound = await User.findOne({phone: phoneNo}).exec()
-  if (!phoneFound) return res.status(402).json({ message: "Your phone number are already been used before, try it again next time" });
-  // find if device are already been used
+  try {
+    const { phoneNo, networkType } = req.body;
 
-  const cookies = req.cookies;
+    if (!phoneNo || !networkType) {
+      return res.status(400).json({ "message": "Username and password are required." });
+    }
 
-  if (!cookies?.quizsession) return res.sendStatus(401).json({ message: "Your device  are already been used before, try it again next time" });
-   const request_id = `${await refrenceId()}fghu3`;
- 
-   let networkId = '';
-   switch (networkType) {
-     case "MTN":
-       networkId = 1;
-       break;
-     case "AIRTEL":
-       networkId = 2;
-       break;
-     case "GLO":
-       networkId = 3;
-       break;
-     case "9MOBILE":
-       networkId = 4;
-       break;
- 
-   }
+    const phoneFound = await User.findOne({phone: phoneNo}).exec();
 
-   // res.json({message:networkId})
-   let data = {
-     "network": networkId,
-     "amount": 100,
-     "phone_number": phoneNo,
-     "reference": request_id,
-     "disable_validation": false,
-     "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/"
-   };
- 
- 
-   let config = {
-     method: 'post',
-     url: 'https://isquaredata.com/api/airtime/buy/',
-     headers: {
-       'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
-     },
-     data: data
-   };
- 
- 
-   try {
-     const response = await axios(config);
- 
-     const time = await refrenceId();
-     const status = response.data.status;
-     const arrangedate = await arrangeDate()
-   const dateOftran = await transactiondate();
- 
-     // if (!('status' in response.data)) {
-     //   return res.status(401).json({ "message": " Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you" })
-     // }
-     
-     console.log(status, 'status');
-     if (status === "pending" || status === "successful" || status === "success" || ('status' in response.data)) {
-       const newbalance = foundUser.walletBalance - amount;
-       const oldbalance =foundUser.walletBalance
-       foundUser.walletBalance -= amount
-       const tran = await handletransaction(arrangedate, foundUser.email, time, amount, newbalance, `Airtime`, phone, `Dear Customer, You have successfully Buy ${amount} Airtime ${networkName.toUpperCase()}  For this phone number ${phone} `, 'success', dateOftran, `${networkName.toUpperCase()} Airtime`, oldbalance)
-       const result = await foundUser.save()
-       console.log(result, tran, newbalance, oldbalance);
-      
-       res.json({'success':status})
-     } else { 
-       const tran = await handletransaction(arrangedate, foundUser.email, time, `00.00`, foundUser.walletBalance, `Airtime`, phone, `Dear Customer, You are try to Buy ${amount} Airtime ${networkName.toUpperCase()} and is  fail try it again  thanks. `, 'failed', dateOftran, `${networkName.toUpperCase()} Airtime`)
-     }
-     console.log();
-   } catch (error) {
-     console.log(error);
-     res.json({'message': 'Sorry try it again later, and i will like you if you can help me call this number 07068393706 or text on whatsapp and tell her what problem you are facing, thanks you'})
-      }
-    
-    
+    if (!phoneFound) {
+      return res.status(402).json({ message: "Your phone number has already been used before, try again next time" });
+    }
 
+    const cookies = req.cookies;
+
+    if (!cookies?.quizsession) {
+      return res.status(401).json({ message: "Your device has already been used before, try again next time" });
+    }
+
+    const request_id = `${await refrenceId()}fghu3`;
+
+    let networkId = '';
+    switch (networkType) {
+      case "MTN":
+        networkId = 1;
+        break;
+      case "AIRTEL":
+        networkId = 2;
+        break;
+      case "GLO":
+        networkId = 3;
+        break;
+      case "9MOBILE":
+        networkId = 4;
+        break;
+    }
+
+    let data = {
+      "network": networkId,
+      "amount": 100,
+      "phone_number": phoneNo,
+      "reference": request_id,
+      "disable_validation": false,
+      "webhook_url": "https://api-abanise-5a3s.vercel.app/sub/",
+    };
+
+    let config = {
+      method: 'post',
+      url: 'https://isquaredata.com/api/airtime/buy/',
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
+      },
+      data: data
+    };
+
+    const response = await axios(config);
+
+    const time = await refrenceId();
+    const status = response.data.status;
+
+    return res.json({ success: ` successful collect gift `});
+  } catch (error) {
+    console.log(error);
+    return res.json({'message': 'Sorry try it again later, and I would appreciate it if you could call this number 07068393706 '});
+  }
 };
+
 
 module.exports = { registerNumberForQUiz, givePhoneGift };
