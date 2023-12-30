@@ -27,15 +27,13 @@ const registerNumberForQUiz = async (req, res) => {
   if (phoneFound) return res.status(402).json({ message: "Your phone number has already been used before, try again next time" });
   // find if device has already been used
   const cookies = req.cookies;
-  if (cookies?.quizsession) return res.status(401).json({ message: "Your device has already been used before, try again next time" });
-
-  // create JWTs
-  const refreshToken = jwt.sign(
+  if (cookies?.quizsession2) return res.status(401).json({ message: "Your device has already been used before, try again next time" });
+  if (!cookies?.quizsession2){
+    const refreshToken = jwt.sign(
     { phoneNo },
     process.env.REFRESH_TOKEN_SECRETY,
     { expiresIn: "5d" }
   );
-
   const save = await savequiz(phoneNo);
   const questions = [
     {
@@ -168,8 +166,7 @@ const registerNumberForQUiz = async (req, res) => {
     },
   
   ];
-  
-  res.cookie("quizsession", refreshToken, { 
+  res.cookie("quizsession2", refreshToken, { 
     httpOnly: true,
     secure: true,
     sameSite: "None",
@@ -177,6 +174,15 @@ const registerNumberForQUiz = async (req, res) => {
   });
   res.json({ success: questions });
 };
+
+
+  }
+  // create JWTs
+  
+
+  
+  
+  
 
 
 const givePhoneGift = async (req, res) => {
@@ -195,31 +201,31 @@ const givePhoneGift = async (req, res) => {
 
     const cookies = req.cookies;
 
-    if (!cookies?.quizsession) {
-      return res.status(401).json({ message: "Your device has already been used before, try again next time" });
+    if (!cookies?.quizsession2) {
+      return res.status(401).json({ message: " something when wrong try it again" });
     }
 
     const request_id = `${await refrenceId()}fghu3`;
 
-    let networkId = '';
+    let planing = '';
     switch (networkType) {
       case "MTN":
-        networkId = 1;
+        planing = 2;
         break;
       case "AIRTEL":
-        networkId = 2;
+        planing = 160;
         break;
       case "GLO":
-        networkId = 3;
+        planing = 174;
         break;
       case "9MOBILE":
-        networkId = 4;
+        planing = 350;
         break;
     }
-
+    console.log(phoneNo,networkId );
     let data = {
-      "network": networkId,
-      "amount": 100,
+      
+      "plan": planing,
       "phone_number": phoneNo,
       "reference": request_id,
       "disable_validation": false,
@@ -228,7 +234,7 @@ const givePhoneGift = async (req, res) => {
 
     let config = {
       method: 'post',
-      url: 'https://isquaredata.com/api/airtime/buy/',
+      url: 'https://isquaredata.com/api/data/buy/',
       headers: {
         'Authorization': 'Basic ' + Buffer.from(process.env.AIRTIMEANDDATA_CODE).toString('base64')
       },
