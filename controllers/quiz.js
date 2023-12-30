@@ -222,7 +222,7 @@ const givePhoneGift = async (req, res) => {
         planing = 350;
         break;
     }
-    console.log(phoneNo,networkId );
+    
     let data = {
       
       "plan": planing,
@@ -249,7 +249,7 @@ const givePhoneGift = async (req, res) => {
     return res.json({ success: ` successful collect gift `});
   } catch (error) {
     console.log(error);
-    return res.json({'message': 'Sorry try it again later, and I would appreciate it if you could call this number 07068393706 '});
+    return res.status(401).json({ message: "sorry you have late, gift have finished" });
   }
 };
 
